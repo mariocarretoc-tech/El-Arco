@@ -4,10 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Abarrotes El Arco - Tienda en Línea</title>
-    
-    <!-- Librería externa para leer archivos Excel directamente en el navegador -->
-    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
-
     <style>
         :root {
             --primary: #1976d2; /* Azul Medio */
@@ -110,29 +106,6 @@
             margin-bottom: 0.5rem;
         }
 
-        /* Barra de Alerta Administrador */
-        .admin-bar {
-            display: none;
-            background-color: var(--admin-color);
-            color: white;
-            text-align: center;
-            padding: 0.5rem;
-            font-weight: bold;
-            font-size: 0.9rem;
-        }
-
-        /* PANEL DE EXCEL */
-        .admin-panel {
-            display: none;
-            max-width: 1200px;
-            margin: 2rem auto 0 auto;
-            background: #ffebee;
-            border: 2px dashed var(--admin-color);
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            text-align: center;
-        }
 
         .admin-panel h3 {
             color: var(--admin-color);
@@ -148,64 +121,6 @@
         .excel-input-wrapper {
             display: inline-block;
             position: relative;
-        }
-
-        /* Botón de Excel estilizado */
-        .btn-excel {
-            background-color: #1a73e8;
-            color: white;
-            border: none;
-            padding: 0.7rem 2rem;
-            border-radius: 25px;
-            font-weight: bold;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: background 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
-        }
-
-        .btn-excel:hover {
-            background-color: #1557b0;
-        }
-
-        #excel-file-input {
-            position: absolute;
-            left: 0;
-            top: 0;
-            opacity: 0;
-            width: 100%;
-            height: 100%;
-            cursor: pointer;
-        }
-
-        /* Categorías */
-        .categories {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            padding: 2rem 1rem;
-            flex-wrap: wrap;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .cat-btn {
-            background: white;
-            border: 2px solid var(--primary);
-            color: var(--primary);
-            padding: 0.5rem 1.5rem;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: 0.3s;
-        }
-
-        .cat-btn:hover, .cat-btn.active {
-            background-color: var(--primary);
-            color: white;
         }
 
         /* Contenedor de Productos */
@@ -245,44 +160,6 @@
             background-color: #fff;
             padding: 1rem;
             border-bottom: 1px solid #f0f0f0;
-        }
-
-        /* Botón Eliminar de Tarjeta */
-        .delete-product-btn {
-            display: none;
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background-color: var(--admin-color);
-            color: white;
-            border: none;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-weight: bold;
-            z-index: 10;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
-
-        /* Zona de cambio de imagen */
-        .admin-upload-zone {
-            display: none;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 180px;
-            background-color: rgba(211, 47, 47, 0.85);
-            color: white;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            cursor: pointer;
-            padding: 1rem;
-            text-align: center;
-            font-weight: bold;
-            font-size: 0.85rem;
         }
 
         .admin-upload-zone input[type="file"] {
@@ -485,23 +362,6 @@
 </head>
 <body>
 
-    <!-- Alerta superior de Administrador -->
-    <div class="admin-bar" id="adminBar">
-        🛠️ Modo Administrador Activo — Gestión Masiva con Excel Habilitada.
-    </div>
-
-    <!-- PANEL DE IMPORTACIÓN EXCEL -->
-    <section class="admin-panel" id="adminPanel">
-        <h3>📥 Importación Masiva desde Excel (4 Columnas)</h3>
-        <p style="margin-bottom: 10px;">Sube tu archivo con las siguientes columnas en orden:</p>
-        <p><strong>Columna 1:</strong> Descripción | <strong>Columna 2:</strong> Precio | <strong>Columna 3:</strong> Departamento | <strong>Columna 4:</strong> Imagen (Texto Base64 - Opcional)</p>
-        
-        <div class="excel-input-wrapper" style="margin-top: 10px;">
-            <button class="btn-excel">📊 Seleccionar Archivo Excel</button>
-            <input type="file" id="excel-file-input" accept=".xlsx, .xls" onchange="importarExcel(event)">
-        </div>
-    </section>
-
     <!-- Encabezado -->
     <header>
         <div class="header-container">
@@ -509,34 +369,16 @@
                 <h1>🛒 Abarrotes El Arco</h1>
             </div>
             <div class="nav-controls">
-                <!-- <button class="admin-btn" id="adminToggleBtn" onclick="toggleAdminMode()">Modo Admin</button> -->
-                <span class="cart-btn" id="cart-counter" onclick="abrirCarrito()">Mi Carrito (0)</span>
+               <span class="cart-btn" id="cart-counter" onclick="abrirCarrito()">Mi Carrito (0)</span>
             </div>
         </div>
     </header>
 
+
     <!-- Banner promocional -->
     <section class="hero">
-        <h2>Catálogo de Productos Completo</h2>
+        <h2>Catálogo de Productos</h2>
         <p>Selecciona tu despensa y envíala directamente a nuestro WhatsApp.</p>
-    </section>
-
-    <!-- Filtros por Categoría -->
-    <section class="categories" id="categories-container">
-        <button class="cat-btn active" onclick="filtrarCategoria('Todos', this)">Todos</button>
-        <button class="cat-btn" onclick="filtrarCategoria('Detergentes', this)">Detergentes</button>
-        <button class="cat-btn" onclick="filtrarCategoria('Cuidado personal', this)">Cuidado Personal</button>
-        <button class="cat-btn" onclick="filtrarCategoria('Limpieza', this)">Limpieza</button>
-        <button class="cat-btn" onclick="filtrarCategoria('SkinCare', this)">SkinCare</button>
-        <button class="cat-btn" onclick="filtrarCategoria('Enlatados', this)">Enlatados</button>
-	<button class="cat-btn" onclick="filtrarCategoria('Café', this)">Café</button>
-	<button class="cat-btn" onclick="filtrarCategoria('Bebida alcoholica', this)">Bebida alcoholica</button>
-        <button class="cat-btn" onclick="filtrarCategoria('Papel Higienico', this)">Papel Higiénico</button>
-        <button class="cat-btn" onclick="filtrarCategoria('Comida', this)">Comida</button>
-        <button class="cat-btn" onclick="filtrarCategoria('Galletas', this)">Galletas</button>
-        <button class="cat-btn" onclick="filtrarCategoria('Cereal', this)">Cereal</button>
-        <button class="cat-btn" onclick="filtrarCategoria('Cuidado íntimo', this)">Cuidado Íntimo</button>
-        <button class="cat-btn" onclick="filtrarCategoria('Insecticidas', this)">Insecticidas</button>
     </section>
 
     <!-- Cuadrícula de Productos -->
@@ -545,6 +387,19 @@
             <!-- Inyección por JS -->
         </div>
     </main>
+
+<input
+type="text"
+id="buscador"
+placeholder="Buscar producto...">
+
+<div class="categorias" id="categorias"></div>
+
+<div class="container">
+
+<div class="productos" id="productos"></div>
+
+<div class="carrito">
 
     <!-- Carrito Flotante -->
     <div class="cart-modal" id="cartModal">
@@ -564,14 +419,14 @@
     </footer>
 
     <script>
-        const ADMIN_PASSWORD = "admin123";
-        let esAdmin = false;
+
         let categoriaActual = "Todos";
+        let productos=[];
 
 	async function cargarProductos()
 	{
-	const response=await fetch("productos.json");
-	productos=await response.json();
+	const response = await fetch("productos.json");
+	productos = await response.json();
 
 	crearCategorias();
 	mostrarProductos(productos);
@@ -596,7 +451,7 @@ btn.textContent=cat;
 btn.onclick=()=>{
 
 if(cat==="Todos"){
-mostrarProductos(productos);
+mostrarProductos(productosBase);
 }else{
 mostrarProductos(
 productos.filter(
@@ -637,187 +492,7 @@ Agregar
 });
 
 }
-
-
-        // Dibujar catálogo principal en la pantalla
-        function cargarProductos1(categoriaSeleccionada = "Todos") {
-            categoriaActual = categoriaSeleccionada;
-            const grid = document.getElementById('products-grid-container');
-            grid.innerHTML = ""; 
-
-            const productosFiltrados = categoriaSeleccionada === "Todos" 
-                ? productosInventario 
-                : productosInventario.filter(p => p.departamento === categoriaSeleccionada);
-
-            productosFiltrados.forEach((prod) => {
-                const indexReal = productosInventario.findIndex(p => p.descripcion === prod.descripcion);
-
-                grid.innerHTML += `
-                    <div class="product-card">
-                        <button class="delete-product-btn" style="display: ${esAdmin ? 'block' : 'none'}" onclick="quitarProducto(${indexReal})">❌</button>
-                        <img src="${prod.imagen || 'https://via.placeholder.com/300x180?text=Sin+Foto'}" alt="${prod.descripcion}" class="product-img" onerror="this.src='https://via.placeholder.com/300x180?text=Sin+Foto'">
-                        
-                        <div class="admin-upload-zone" style="display: ${esAdmin ? 'flex' : 'none'}" onclick="document.getElementById('file-${indexReal}').click()">
-                            <span>📸 Cambiar Imagen</span>
-                            <input type="file" id="file-${indexReal}" accept="image/*" onchange="actualizarImagen(event, ${indexReal})">
-                        </div>
-
-                        <div class="product-info">
-                            
-                            ${esAdmin ? `
-                                <select class="edit-dept-select" onchange="actualizarTexto(${indexReal}, 'departamento', this.value)">
-                                    <option value="Detergentes" ${prod.departamento === 'Detergentes' ? 'selected' : ''}>Detergentes</option>
-                                    <option value="Cuidado personal" ${prod.departamento === 'Cuidado personal' ? 'selected' : ''}>Cuidado personal</option>
-                                    <option value="Limpieza" ${prod.departamento === 'Limpieza' ? 'selected' : ''}>Limpieza</option>
-                                    <option value="Papel Higienico" ${prod.departamento === 'Papel Higienico' ? 'selected' : ''}>Papel Higienico</option>
-                                    <option value="Comida" ${prod.departamento === 'Comida' ? 'selected' : ''}>Comida</option>
-                                    <option value="Galletas" ${prod.departamento === 'Galletas' ? 'selected' : ''}>Galletas</option>
-
-                                    <option value="SkinCare" ${prod.departamento === 'SkinCare' ? 'selected' : ''}>SkinCare</option>
-				    <option value="Enlatados" ${prod.departamento === 'Enlatados' ? 'selected' : ''}>Enlatados</option>
-				    <option value="Café" ${prod.departamento === 'Café' ? 'selected' : ''}>Café</option>
-				    <option value="Bebida alcoholica" ${prod.departamento === 'Bebida alcoholica' ? 'selected' : ''}>Bebida alcoholica</option>
-
-                                    <option value="Cereal" ${prod.departamento === 'Cereal' ? 'selected' : ''}>Cereal</option>
-                                    <option value="Cuidado íntimo" ${prod.departamento === 'Cuidado íntimo' ? 'selected' : ''}>Cuidado íntimo</option>
-                                    <option value="Insecticidas" ${prod.departamento === 'Insecticidas' ? 'selected' : ''}>Insecticidas</option>
-                                </select>
-                                <input type="text" class="edit-title-input" value="${prod.descripcion}" onchange="actualizarTexto(${indexReal}, 'descripcion', this.value)">
-                                <div class="edit-price-container">
-                                    <strong>$</strong>
-                                    <input type="number" step="0.01" class="edit-price-input" value="${prod.precio}" onchange="actualizarTexto(${indexReal}, 'precio', this.value)">
-                                </div>
-                            ` : `
-                                <span class="product-badge">${prod.departamento}</span>
-                                <h3 class="product-title">${prod.descripcion}</h3>
-                                <p class="product-price">$${prod.precio.toFixed(2)}</p>
-                            `}
-                            
-                            <button class="add-to-cart" onclick="agregarAlCarrito('${prod.descripcion}', ${prod.precio})">Agregar al carrito</button>
-                        </div>
-                    </div>
-                `;
-            });
-        }
-
-        // Entrar / Salir del modo de gestión
-        function toggleAdminMode() {
-            const btn = document.getElementById('adminToggleBtn');
-            const bar = document.getElementById('adminBar');
-            const panel = document.getElementById('adminPanel');
-
-            if (!esAdmin) {
-                const passIngresada = prompt("Ingresa la contraseña de Administrador:");
-                if (passIngresada === ADMIN_PASSWORD) {
-                    esAdmin = true;
-                    btn.innerText = "Cerrar Admin";
-                    btn.classList.add('active');
-                    bar.style.display = "block";
-                    panel.style.display = "block";
-                } else if (passIngresada !== null) {
-                    alert("Contraseña incorrecta.");
-                }
-            } else {
-                esAdmin = false;
-                btn.innerText = "Modo Admin";
-                btn.classList.remove('active');
-                bar.style.display = "none";
-                panel.style.display = "none";
-            }
-            cargarProductos(categoriaActual);
-        }
-
-        // --- SISTEMA DE LECTURA DE EXCEL ---
-        function importarExcel(event) {
-            const archivo = event.target.files[0];
-            if (!archivo) return;
-
-            const lector = new FileReader();
-            lector.onload = function(e) {
-                const datos = new Uint8Array(e.target.result);
-                const libroTrabajo = XLSX.read(datos, { type: 'array' });
-                
-                const nombreHoja = libroTrabajo.SheetNames[0];
-                const hoja = libroTrabajo.Sheets[nombreHoja];
-                
-                const filas = XLSX.utils.sheet_to_json(hoja, { header: 1 });
-                let nuevosProductos = [];
-
-                for (let i = 0; i < filas.length; i++) {
-                    const fila = filas[i];
-                    if (!fila || fila.length === 0) continue;
-
-                    let desc = fila[0] ? fila[0].toString().trim() : "";
-                    let precio = parseFloat(fila[1]);
-                    let dept = fila[2] ? fila[2].toString().trim() : "Comida"; 
-                    let img = fila[3] ? fila[3].toString().trim() : "";
-
-                    if (i === 0 && (desc.toLowerCase().includes("desc") || isNaN(precio))) {
-                        continue; 
-                    }
-
-                    if (desc !== "" && !isNaN(precio)) {
-                        nuevosProductos.push({
-                            descripcion: desc,
-                            precio: precio,
-                            departamento: dept, 
-                            imagen: img
-                        });
-                    }
-                }
-
-                if (nuevosProductos.length === 0) {
-                    alert("No se procesaron productos.");
-                    return;
-                }
-
-                if (confirm(`Se encontraron ${nuevosProductos.length} productos.\n\n¿Deseas AGREGARLOS a tu lista actual?`)) {
-                    productosInventario = [...nuevosProductos, ...productosInventario];
-                } else {
-                    productosInventario = nuevosProductos;
-                }
-
-                localStorage.setItem('inventario_tienda', JSON.stringify(productosInventario));
-                cargarProductos("Todos");
-                
-                event.target.value = ""; 
-                alert("¡Éxito! Catálogo actualizado.");
-            };
-
-            lector.readAsArrayBuffer(archivo);
-        }
-
-        function actualizarTexto(index, propiedad, valor) {
-            if (propiedad === 'precio') {
-                const num = parseFloat(valor);
-                productosInventario[index][propiedad] = isNaN(num) ? 0 : num;
-            } else {
-                productosInventario[index][propiedad] = valor.trim();
-            }
-            localStorage.setItem('inventario_tienda', JSON.stringify(productosInventario));
-        }
-
-        function actualizarImagen(event, index) {
-            const archivo = event.target.files[0];
-            if (!archivo) return;
-
-            const lector = new FileReader();
-            lector.onload = function(e) {
-                productosInventario[index].imagen = e.target.result;
-                localStorage.setItem('inventario_tienda', JSON.stringify(productosInventario));
-                cargarProductos(categoriaActual);
-            };
-            lector.readAsDataURL(archivo);
-        }
-
-        function quitarProducto(index) {
-            if (confirm(`¿Eliminar permanentemente "${productosInventario[index].descripcion}"?`)) {
-                productosInventario.splice(index, 1);
-                localStorage.setItem('inventario_tienda', JSON.stringify(productosInventario));
-                cargarProductos(categoriaActual);
-            }
-        }
-
+ 
         // --- SISTEMA DEL CARRITO DE COMPRAS ---
         function filtrarCategoria(categoria, boton) {
             const botones = document.querySelectorAll('.cat-btn');
