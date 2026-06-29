@@ -1,23 +1,12 @@
 [
-  {
-    "id": 1,
-    "nombre": "Arroz 1 Kg",
-    "precio": 28,
-    "categoria": "Granos",
-    "imagen": "https://picsum.photos/300/200?1"
-  },
-  {
-    "id": 2,
-    "nombre": "Frijol 1 Kg",
-    "precio": 35,
-    "categoria": "Granos",
-    "imagen": "https://picsum.photos/300/200?2"
-  },
-  {
-    "id": 3,
-    "nombre": "Aceite 1L",
-    "precio": 55,
-    "categoria": "Despensa",
-    "imagen": "https://picsum.photos/300/200?3"
-  }
+{"id":1,"nombre":"Zest Neutro Micelar Antibacterial 90 g","precio":11,"categoria":"Jabón Corporal","imagen":"img/221.jpg"},
+{"id":2,"nombre":"Zote 400gr","precio":23,"categoria":"Limpieza","imagen":"img/223.jpg"},
+{"id":3,"nombre":"Igoto Pump FPS-3 Flotador con Contrapeso de 2 m, Color Negro y Naranja","precio":1,"categoria":"Casa","imagen":"img/224.jpg"},
+{"id":4,"nombre":"CeraVe Gel Limpiador Espumoso Facial para Piel Mixta a Grasa con Ceramidas Esenciales, Niacinamida y Ácido Hialurónico, 473 ml","precio":269,"categoria":"SkinCare","imagen":"img/225.jpg"},
+{"id":5,"nombre":"McCormick Té de manzanilla 50 sobres","precio":35,"categoria":"Café","imagen":"img/226.jpg"},
+{"id":6,"nombre":"Cetaphil Gel Limpiador Facial Diario Piel Mixta Grasa Niacinamida B3 473 ml","precio":229,"categoria":"SkinCare","imagen":"img/227.jpg"},
+{"id":7,"nombre":"Leche Lala Deslactosada Light, Pack de 10 piezas por 1.5 L c/u","precio":399,"categoria":"Leche","imagen":"img/228.jpg"},
+{"id":8,"nombre":"NIVEA Desmaquillante Facial Bifásico de Ojos (125 ml)","precio":62,"categoria":"SkinCare","imagen":"img/229.jpg"},
+{"id":9,"nombre":"Garnier Express Aclara Agua micelar desmaquillante con Vitamina C Tono Uniforme, 400ml","precio":69,"categoria":"SkinCare","imagen":"img/230.jpg"},
+{"id":10,"nombre":"CETAPHIL Crema Hidratante 453 g Recomendada por Dermatólogos para Piel Sensible","precio":199,"categoria":"SkinCare","imagen":"img/231.jpg"}
 ]
