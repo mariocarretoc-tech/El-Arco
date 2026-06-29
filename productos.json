@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "nombre": "Arroz 1 Kg",
+    "precio": 28,
+    "categoria": "Granos",
+    "imagen": "https://picsum.photos/300/200?1"
+  },
+  {
+    "id": 2,
+    "nombre": "Frijol 1 Kg",
+    "precio": 35,
+    "categoria": "Granos",
+    "imagen": "https://picsum.photos/300/200?2"
+  },
+  {
+    "id": 3,
+    "nombre": "Aceite 1L",
+    "precio": 55,
+    "categoria": "Despensa",
+    "imagen": "https://picsum.photos/300/200?3"
+  }
+]
