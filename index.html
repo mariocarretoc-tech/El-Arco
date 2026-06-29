@@ -287,6 +287,10 @@ lista.forEach(producto=>{
 cont.innerHTML+=`
 <div class="card">
 
+<h3>${producto.nombre}</h3>
+
+<p>$${producto.precio}</p>
+
 <img
 src="${producto.imagen}"
 onclick="ampliarImagen('${producto.imagen}')nclick="agregarCarrito(${producto.id})">
