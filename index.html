@@ -568,7 +568,7 @@
         let esAdmin = false;
         let categoriaActual = "Todos";
 
-	async function cargarProductos1()
+	async function cargarProductos()
 	{
 	const response=await fetch("productos.json");
 	productos=await response.json();
@@ -640,7 +640,7 @@ Agregar
 
 
         // Dibujar catálogo principal en la pantalla
-        function cargarProductos(categoriaSeleccionada = "Todos") {
+        function cargarProductos1(categoriaSeleccionada = "Todos") {
             categoriaActual = categoriaSeleccionada;
             const grid = document.getElementById('products-grid-container');
             grid.innerHTML = ""; 
