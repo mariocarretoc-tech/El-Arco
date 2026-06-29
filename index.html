@@ -1,246 +1,583 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abarrotes El Arco - Tienda en Línea</title>
+    
+    <!-- Librería externa para leer archivos Excel directamente en el navegador -->
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 
-<title>El Arco</title>
+    <style>
+        :root {
+            --primary: #1976d2; /* Azul Medio */
+            --primary-hover: #115293; 
+            --secondary: #f57c00; /* Naranja */
+            --dark: #333;
+            --light: #f9f9f9;
+            --admin-color: #d32f2f; /* Rojo para modo admin */
+        }
 
-<style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-body{
-margin:0;
-font-family:Arial,sans-serif;
-background:#0f172a;
-color:white;
-}
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+        }
 
-header{
-background:#001f54;
-padding:15px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-}
+        /* Cabecera y Navegación */
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
 
-.logo{
-display:flex;
-align-items:center;
-gap:10px;
-}
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
 
-.logo img{
-width:60px;
-height:60px;
-border-radius:50%;
-}
+        .logo h1 {
+            font-size: 1.5rem;
+        }
 
-.cart-counter{
-background:#2563eb;
-padding:10px 15px;
-border-radius:30px;
-font-weight:bold;
-}
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
 
-.banner{
-background:#2563eb;
-padding:15px;
-text-align:center;
-font-size:18px;
-font-weight:bold;
-}
+        .cart-btn {
+            background-color: var(--secondary);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+        
+        .cart-btn:hover {
+            background-color: #e65100;
+        }
 
-#buscador{
-display:block;
-width:90%;
-max-width:500px;
-margin:20px auto;
-padding:10px;
-border-radius:10px;
-border:none;
-}
+        .admin-btn {
+            background-color: transparent;
+            color: white;
+            border: 1px solid white;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.2s;
+        }
 
-.categorias{
-display:flex;
-gap:10px;
-justify-content:center;
-flex-wrap:wrap;
-margin-bottom:20px;
-}
+        .admin-btn:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
 
-.categorias button{
-padding:10px;
-border:none;
-border-radius:10px;
-background:#2563eb;
-color:white;
-cursor:pointer;
-}
+        .admin-btn.active {
+            background-color: var(--admin-color);
+            border-color: var(--admin-color);
+        }
 
-.container{
-display:grid;
-grid-template-columns:3fr 1fr;
-gap:20px;
-padding:20px;
-}
+        /* Banner Principal */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
+            height: 180px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 0 1rem;
+        }
 
-.productos{
-display:grid;
-grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
-gap:20px;
-}
+        .hero h2 {
+            font-size: 2.3rem;
+            margin-bottom: 0.5rem;
+        }
 
-.card{
-background:#1e293b;
-padding:15px;
-border-radius:15px;
-}
+        /* Barra de Alerta Administrador */
+        .admin-bar {
+            display: none;
+            background-color: var(--admin-color);
+            color: white;
+            text-align: center;
+            padding: 0.5rem;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
 
-.card img{
-width:100%;
-height:200px;
-object-fit:cover;
-border-radius:10px;
-cursor:pointer;
-}
+        /* PANEL DE EXCEL */
+        .admin-panel {
+            display: none;
+            max-width: 1200px;
+            margin: 2rem auto 0 auto;
+            background: #ffebee;
+            border: 2px dashed var(--admin-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            text-align: center;
+        }
 
-.card button{
-width:100%;
-padding:10px;
-margin-top:10px;
-background:#2563eb;
-border:none;
-color:white;
-border-radius:10px;
-cursor:pointer;
-}
+        .admin-panel h3 {
+            color: var(--admin-color);
+            margin-bottom: 0.5rem;
+        }
 
-.carrito{
-background:#1e293b;
-padding:20px;
-border-radius:15px;
-}
+        .admin-panel p {
+            font-size: 0.9rem;
+            color: #555;
+            margin-bottom: 1.2rem;
+        }
 
-.item-carrito{
-margin-bottom:10px;
-padding-bottom:10px;
-border-bottom:1px solid #334155;
-}
+        .excel-input-wrapper {
+            display: inline-block;
+            position: relative;
+        }
 
-.qty{
-display:flex;
-gap:10px;
-align-items:center;
-}
+        /* Botón de Excel estilizado */
+        .btn-excel {
+            background-color: #1a73e8;
+            color: white;
+            border: none;
+            padding: 0.7rem 2rem;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+        }
 
-.qty button{
-padding:5px 10px;
-}
+        .btn-excel:hover {
+            background-color: #1557b0;
+        }
 
-.whatsapp{
-width:100%;
-padding:12px;
-margin-top:20px;
-border:none;
-background:#25D366;
-color:white;
-border-radius:10px;
-cursor:pointer;
-}
+        #excel-file-input {
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
 
-.modal{
-display:none;
-position:fixed;
-inset:0;
-background:rgba(0,0,0,0.9);
-justify-content:center;
-align-items:center;
-}
+        /* Categorías */
+        .categories {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            padding: 2rem 1rem;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
 
-.modal img{
-max-width:90%;
-max-height:90%;
-}
+        .cat-btn {
+            background: white;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
 
-@media(max-width:768px){
-.container{
-grid-template-columns:1fr;
-}
-}
+        .cat-btn:hover, .cat-btn.active {
+            background-color: var(--primary);
+            color: white;
+        }
 
-</style>
+        /* Contenedor de Productos */
+        .products-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem 3rem 1rem;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* Tarjeta de Producto */
+        .product-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            transition: transform 0.2s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-img {
+            width: 100%;
+            height: 180px;
+            object-fit: contain;
+            background-color: #fff;
+            padding: 1rem;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        /* Botón Eliminar de Tarjeta */
+        .delete-product-btn {
+            display: none;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: var(--admin-color);
+            color: white;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-weight: bold;
+            z-index: 10;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        /* Zona de cambio de imagen */
+        .admin-upload-zone {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 180px;
+            background-color: rgba(211, 47, 47, 0.85);
+            color: white;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 1rem;
+            text-align: center;
+            font-weight: bold;
+            font-size: 0.85rem;
+        }
+
+        .admin-upload-zone input[type="file"] {
+            display: none;
+        }
+
+        .product-info {
+            padding: 1rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: space-between;
+            gap: 0.5rem;
+        }
+
+        /* Inputs editables individuales */
+        .edit-title-input {
+            width: 100%;
+            padding: 0.3rem;
+            border: 1px solid var(--admin-color);
+            border-radius: 4px;
+            text-align: center;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .edit-price-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.2rem;
+            color: var(--admin-color);
+        }
+
+        .edit-price-input {
+            width: 80px;
+            padding: 0.3rem;
+            border: 1px solid var(--admin-color);
+            border-radius: 4px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .edit-dept-select {
+            width: 100%;
+            padding: 0.3rem;
+            border: 1px solid var(--admin-color);
+            border-radius: 4px;
+            font-size: 0.85rem;
+            background: white;
+        }
+
+        .product-title {
+            font-size: 1rem;
+            color: #333;
+            min-height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product-badge {
+            font-size: 0.75rem;
+            background-color: #e3f2fd;
+            color: var(--primary);
+            padding: 0.2rem 0.6rem;
+            border-radius: 10px;
+            align-self: center;
+            font-weight: 600;
+        }
+
+        .product-price {
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .add-to-cart {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.6rem;
+            width: 100%;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.2s;
+            margin-top: 0.5rem;
+        }
+
+        .add-to-cart:hover {
+            background-color: var(--primary-hover);
+        }
+
+        /* Carrito Modal */
+        .cart-modal {
+            display: none; 
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cart-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .close-cart {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .cart-title {
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .quantity-controls button {
+            background-color: #eee;
+            border: none;
+            padding: 0.2rem 0.6rem;
+            cursor: pointer;
+            font-weight: bold;
+            border-radius: 3px;
+        }
+
+        .quantity-controls span {
+            margin: 0 0.5rem;
+            font-weight: bold;
+        }
+
+        .cart-total-section {
+            margin-top: 1.5rem;
+            text-align: right;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-top: 2px solid #eee;
+            padding-top: 1rem;
+        }
+
+        .checkout-btn {
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 0.8rem;
+            margin-top: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        .checkout-btn:hover {
+            background-color: #e65100;
+        }
+
+        .empty-message {
+            text-align: center;
+            color: #888;
+            margin: 2rem 0;
+        }
+
+        footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+    </style>
 </head>
 <body>
 
-<header>
+    <!-- Alerta superior de Administrador -->
+    <div class="admin-bar" id="adminBar">
+        🛠️ Modo Administrador Activo — Gestión Masiva con Excel Habilitada.
+    </div>
 
-<div class="logo">
-<img src="logo.png">
-<h2>El Arco</h2>
-</div>
+    <!-- PANEL DE IMPORTACIÓN EXCEL -->
+    <section class="admin-panel" id="adminPanel">
+        <h3>📥 Importación Masiva desde Excel (4 Columnas)</h3>
+        <p style="margin-bottom: 10px;">Sube tu archivo con las siguientes columnas en orden:</p>
+        <p><strong>Columna 1:</strong> Descripción | <strong>Columna 2:</strong> Precio | <strong>Columna 3:</strong> Departamento | <strong>Columna 4:</strong> Imagen (Texto Base64 - Opcional)</p>
+        
+        <div class="excel-input-wrapper" style="margin-top: 10px;">
+            <button class="btn-excel">📊 Seleccionar Archivo Excel</button>
+            <input type="file" id="excel-file-input" accept=".xlsx, .xls" onchange="importarExcel(event)">
+        </div>
+    </section>
 
-<div class="cart-counter">
-🛒 <span id="contadorCarrito">0</span>
-</div>
+    <!-- Encabezado -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <h1>🛒 Abarrotes El Arco</h1>
+            </div>
+            <div class="nav-controls">
+                <!-- <button class="admin-btn" id="adminToggleBtn" onclick="toggleAdminMode()">Modo Admin</button> -->
+                <span class="cart-btn" id="cart-counter" onclick="abrirCarrito()">Mi Carrito (0)</span>
+            </div>
+        </div>
+    </header>
 
-</header>
+    <!-- Banner promocional -->
+    <section class="hero">
+        <h2>Catálogo de Productos Completo</h2>
+        <p>Selecciona tu despensa y envíala directamente a nuestro WhatsApp.</p>
+    </section>
 
-<div class="banner">
-🔥 Compra arriba de $500 y obtén envío gratis
-</div>
+    <!-- Filtros por Categoría -->
+    <section class="categories" id="categories-container">
+        <button class="cat-btn active" onclick="filtrarCategoria('Todos', this)">Todos</button>
+        <button class="cat-btn" onclick="filtrarCategoria('Detergentes', this)">Detergentes</button>
+        <button class="cat-btn" onclick="filtrarCategoria('Cuidado personal', this)">Cuidado Personal</button>
+        <button class="cat-btn" onclick="filtrarCategoria('Limpieza', this)">Limpieza</button>
+        <button class="cat-btn" onclick="filtrarCategoria('SkinCare', this)">SkinCare</button>
+        <button class="cat-btn" onclick="filtrarCategoria('Enlatados', this)">Enlatados</button>
+	<button class="cat-btn" onclick="filtrarCategoria('Café', this)">Café</button>
+	<button class="cat-btn" onclick="filtrarCategoria('Bebida alcoholica', this)">Bebida alcoholica</button>
+        <button class="cat-btn" onclick="filtrarCategoria('Papel Higienico', this)">Papel Higiénico</button>
+        <button class="cat-btn" onclick="filtrarCategoria('Comida', this)">Comida</button>
+        <button class="cat-btn" onclick="filtrarCategoria('Galletas', this)">Galletas</button>
+        <button class="cat-btn" onclick="filtrarCategoria('Cereal', this)">Cereal</button>
+        <button class="cat-btn" onclick="filtrarCategoria('Cuidado íntimo', this)">Cuidado Íntimo</button>
+        <button class="cat-btn" onclick="filtrarCategoria('Insecticidas', this)">Insecticidas</button>
+    </section>
 
-<input
-type="text"
-id="buscador"
-placeholder="Buscar producto...">
+    <!-- Cuadrícula de Productos -->
+    <main class="products-section">
+        <div class="products-grid" id="products-grid-container">
+            <!-- Inyección por JS -->
+        </div>
+    </main>
 
-<div class="categorias" id="categorias"></div>
+    <!-- Carrito Flotante -->
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-content">
+            <span class="close-cart" onclick="cerrarCarrito()">&times;</span>
+            <h2 class="cart-title">Tu Carrito de Compras</h2>
+            <div id="cart-items-container"></div>
+            <div class="cart-total-section">
+                Total: $<span id="cart-total-price">0.00</span>
+            </div>
+            <button class="checkout-btn" onclick="procesarCompra()">Proceder al Pago (WhatsApp)</button>
+        </div>
+    </div>
 
-<div class="container">
+    <footer>
+        <p>&copy; 2025 Abarrotes El Arco. Todos los derechos reservados.</p>
+    </footer>
 
-<div class="productos" id="productos"></div>
+    <script>
+        const ADMIN_PASSWORD = "admin123";
+        let esAdmin = false;
+        let categoriaActual = "Todos";
 
-<div class="carrito">
+	async function cargarProductos1()
+	{
+	const response=await fetch("productos.json");
+	productos=await response.json();
 
-<h2>Carrito</h2>
+	crearCategorias();
+	mostrarProductos(productos);
+        }
 
-<div id="listaCarrito"></div>
-
-<h3>
-Total: $
-<span id="total">0</span>
-</h3>
-
-<button
-class="whatsapp"
-onclick="enviarWhatsapp()">
-Enviar Pedido
-</button>
-
-</div>
-
-</div>
-
-<div class="modal" id="modal">
-<img id="imgGrande">
-</div>
-
-<script>
-
-let productos=[];
-let carrito=[];
-
-const numeroWhatsApp="5212221234567";
-
-async function cargarProductos(){
-
-const response=await fetch("productos.json");
-productos=await response.json();
-
-crearCategorias();
-mostrarProductos(productos);
-
-}
+        let carrito = [];
 
 function crearCategorias(){
 
@@ -286,7 +623,6 @@ lista.forEach(producto=>{
 
 cont.innerHTML+=`
 <div class="card">
-
 <h3>${producto.nombre}</h3>
 <p>$${producto.precio}</p>
 <img
@@ -302,176 +638,259 @@ Agregar
 
 }
 
-function agregarCarrito(id){
 
-let item=
-carrito.find(i=>i.id===id);
+        // Dibujar catálogo principal en la pantalla
+        function cargarProductos(categoriaSeleccionada = "Todos") {
+            categoriaActual = categoriaSeleccionada;
+            const grid = document.getElementById('products-grid-container');
+            grid.innerHTML = ""; 
 
-if(item){
-item.cantidad++;
-}else{
+            const productosFiltrados = categoriaSeleccionada === "Todos" 
+                ? productosInventario 
+                : productosInventario.filter(p => p.departamento === categoriaSeleccionada);
 
-const producto=
-productos.find(
-p=>p.id===id
-);
+            productosFiltrados.forEach((prod) => {
+                const indexReal = productosInventario.findIndex(p => p.descripcion === prod.descripcion);
 
-carrito.push({
-...producto,
-cantidad:1
-});
+                grid.innerHTML += `
+                    <div class="product-card">
+                        <button class="delete-product-btn" style="display: ${esAdmin ? 'block' : 'none'}" onclick="quitarProducto(${indexReal})">❌</button>
+                        <img src="${prod.imagen || 'https://via.placeholder.com/300x180?text=Sin+Foto'}" alt="${prod.descripcion}" class="product-img" onerror="this.src='https://via.placeholder.com/300x180?text=Sin+Foto'">
+                        
+                        <div class="admin-upload-zone" style="display: ${esAdmin ? 'flex' : 'none'}" onclick="document.getElementById('file-${indexReal}').click()">
+                            <span>📸 Cambiar Imagen</span>
+                            <input type="file" id="file-${indexReal}" accept="image/*" onchange="actualizarImagen(event, ${indexReal})">
+                        </div>
 
-}
+                        <div class="product-info">
+                            
+                            ${esAdmin ? `
+                                <select class="edit-dept-select" onchange="actualizarTexto(${indexReal}, 'departamento', this.value)">
+                                    <option value="Detergentes" ${prod.departamento === 'Detergentes' ? 'selected' : ''}>Detergentes</option>
+                                    <option value="Cuidado personal" ${prod.departamento === 'Cuidado personal' ? 'selected' : ''}>Cuidado personal</option>
+                                    <option value="Limpieza" ${prod.departamento === 'Limpieza' ? 'selected' : ''}>Limpieza</option>
+                                    <option value="Papel Higienico" ${prod.departamento === 'Papel Higienico' ? 'selected' : ''}>Papel Higienico</option>
+                                    <option value="Comida" ${prod.departamento === 'Comida' ? 'selected' : ''}>Comida</option>
+                                    <option value="Galletas" ${prod.departamento === 'Galletas' ? 'selected' : ''}>Galletas</option>
 
-actualizarCarrito();
+                                    <option value="SkinCare" ${prod.departamento === 'SkinCare' ? 'selected' : ''}>SkinCare</option>
+				    <option value="Enlatados" ${prod.departamento === 'Enlatados' ? 'selected' : ''}>Enlatados</option>
+				    <option value="Café" ${prod.departamento === 'Café' ? 'selected' : ''}>Café</option>
+				    <option value="Bebida alcoholica" ${prod.departamento === 'Bebida alcoholica' ? 'selected' : ''}>Bebida alcoholica</option>
 
-}
+                                    <option value="Cereal" ${prod.departamento === 'Cereal' ? 'selected' : ''}>Cereal</option>
+                                    <option value="Cuidado íntimo" ${prod.departamento === 'Cuidado íntimo' ? 'selected' : ''}>Cuidado íntimo</option>
+                                    <option value="Insecticidas" ${prod.departamento === 'Insecticidas' ? 'selected' : ''}>Insecticidas</option>
+                                </select>
+                                <input type="text" class="edit-title-input" value="${prod.descripcion}" onchange="actualizarTexto(${indexReal}, 'descripcion', this.value)">
+                                <div class="edit-price-container">
+                                    <strong>$</strong>
+                                    <input type="number" step="0.01" class="edit-price-input" value="${prod.precio}" onchange="actualizarTexto(${indexReal}, 'precio', this.value)">
+                                </div>
+                            ` : `
+                                <span class="product-badge">${prod.departamento}</span>
+                                <h3 class="product-title">${prod.descripcion}</h3>
+                                <p class="product-price">$${prod.precio.toFixed(2)}</p>
+                            `}
+                            
+                            <button class="add-to-cart" onclick="agregarAlCarrito('${prod.descripcion}', ${prod.precio})">Agregar al carrito</button>
+                        </div>
+                    </div>
+                `;
+            });
+        }
 
-function actualizarCarrito(){
+        // Entrar / Salir del modo de gestión
+        function toggleAdminMode() {
+            const btn = document.getElementById('adminToggleBtn');
+            const bar = document.getElementById('adminBar');
+            const panel = document.getElementById('adminPanel');
 
-let html="";
-let total=0;
-let contador=0;
+            if (!esAdmin) {
+                const passIngresada = prompt("Ingresa la contraseña de Administrador:");
+                if (passIngresada === ADMIN_PASSWORD) {
+                    esAdmin = true;
+                    btn.innerText = "Cerrar Admin";
+                    btn.classList.add('active');
+                    bar.style.display = "block";
+                    panel.style.display = "block";
+                } else if (passIngresada !== null) {
+                    alert("Contraseña incorrecta.");
+                }
+            } else {
+                esAdmin = false;
+                btn.innerText = "Modo Admin";
+                btn.classList.remove('active');
+                bar.style.display = "none";
+                panel.style.display = "none";
+            }
+            cargarProductos(categoriaActual);
+        }
 
-carrito.forEach(item=>{
+        // --- SISTEMA DE LECTURA DE EXCEL ---
+        function importarExcel(event) {
+            const archivo = event.target.files[0];
+            if (!archivo) return;
 
-total+=item.precio*item.cantidad;
+            const lector = new FileReader();
+            lector.onload = function(e) {
+                const datos = new Uint8Array(e.target.result);
+                const libroTrabajo = XLSX.read(datos, { type: 'array' });
+                
+                const nombreHoja = libroTrabajo.SheetNames[0];
+                const hoja = libroTrabajo.Sheets[nombreHoja];
+                
+                const filas = XLSX.utils.sheet_to_json(hoja, { header: 1 });
+                let nuevosProductos = [];
 
-contador+=item.cantidad;
+                for (let i = 0; i < filas.length; i++) {
+                    const fila = filas[i];
+                    if (!fila || fila.length === 0) continue;
 
-html+=`
-<div class="item-carrito">
+                    let desc = fila[0] ? fila[0].toString().trim() : "";
+                    let precio = parseFloat(fila[1]);
+                    let dept = fila[2] ? fila[2].toString().trim() : "Comida"; 
+                    let img = fila[3] ? fila[3].toString().trim() : "";
 
-${item.nombre}
+                    if (i === 0 && (desc.toLowerCase().includes("desc") || isNaN(precio))) {
+                        continue; 
+                    }
 
-<div class="qty">
+                    if (desc !== "" && !isNaN(precio)) {
+                        nuevosProductos.push({
+                            descripcion: desc,
+                            precio: precio,
+                            departamento: dept, 
+                            imagen: img
+                        });
+                    }
+                }
 
-<button onclick="restar(${item.id})">
--
-</button>
+                if (nuevosProductos.length === 0) {
+                    alert("No se procesaron productos.");
+                    return;
+                }
 
-${item.cantidad}
+                if (confirm(`Se encontraron ${nuevosProductos.length} productos.\n\n¿Deseas AGREGARLOS a tu lista actual?`)) {
+                    productosInventario = [...nuevosProductos, ...productosInventario];
+                } else {
+                    productosInventario = nuevosProductos;
+                }
 
-<button onclick="sumar(${item.id})">
-+
-</button>
+                localStorage.setItem('inventario_tienda', JSON.stringify(productosInventario));
+                cargarProductos("Todos");
+                
+                event.target.value = ""; 
+                alert("¡Éxito! Catálogo actualizado.");
+            };
 
-</div>
+            lector.readAsArrayBuffer(archivo);
+        }
 
-</div>
-`;
+        function actualizarTexto(index, propiedad, valor) {
+            if (propiedad === 'precio') {
+                const num = parseFloat(valor);
+                productosInventario[index][propiedad] = isNaN(num) ? 0 : num;
+            } else {
+                productosInventario[index][propiedad] = valor.trim();
+            }
+            localStorage.setItem('inventario_tienda', JSON.stringify(productosInventario));
+        }
 
-});
+        function actualizarImagen(event, index) {
+            const archivo = event.target.files[0];
+            if (!archivo) return;
 
-document.getElementById("listaCarrito").innerHTML=html;
-document.getElementById("total").innerText=total;
-document.getElementById("contadorCarrito").innerText=contador;
+            const lector = new FileReader();
+            lector.onload = function(e) {
+                productosInventario[index].imagen = e.target.result;
+                localStorage.setItem('inventario_tienda', JSON.stringify(productosInventario));
+                cargarProductos(categoriaActual);
+            };
+            lector.readAsDataURL(archivo);
+        }
 
-}
+        function quitarProducto(index) {
+            if (confirm(`¿Eliminar permanentemente "${productosInventario[index].descripcion}"?`)) {
+                productosInventario.splice(index, 1);
+                localStorage.setItem('inventario_tienda', JSON.stringify(productosInventario));
+                cargarProductos(categoriaActual);
+            }
+        }
 
-function sumar(id){
+        // --- SISTEMA DEL CARRITO DE COMPRAS ---
+        function filtrarCategoria(categoria, boton) {
+            const botones = document.querySelectorAll('.cat-btn');
+            botones.forEach(btn => btn.classList.remove('active'));
+            boton.classList.add('active');
+            cargarProductos(categoria);
+        }
 
-carrito.find(
-p=>p.id===id
-).cantidad++;
+        function agregarAlCarrito(nombre, precio) {
+            const productoExistente = carrito.find(item => item.nombre === nombre);
+            if (productoExistente) { productoExistente.cantidad++; } 
+            else { carrito.push({ nombre: nombre, precio: precio, cantidad: 1 }); }
+            actualizarInterfaz();
+        }
 
-actualizarCarrito();
+        function cambiarCantidad(nombre, cambio) {
+            const producto = carrito.find(item => item.nombre === nombre);
+            if (producto) {
+                producto.cantidad += cambio;
+                if (producto.cantidad <= 0) {
+                    carrito = carrito.filter(item => item.nombre !== nombre);
+                }
+            }
+            actualizarInterfaz();
+        }
 
-}
+        function actualizarInterfaz() {
+            const totalItems = carrito.reduce((acumulador, item) => acumulador + item.cantidad, 0);
+            document.getElementById('cart-counter').innerText = `Mi Carrito (${totalItems})`;
 
-function restar(id){
+            const container = document.getElementById('cart-items-container');
+            container.innerHTML = ""; 
 
-const item=
-carrito.find(
-p=>p.id===id
-);
+            if (carrito.length === 0) {
+                container.innerHTML = '<p class="empty-message">Tu carrito está vacío.</p>';
+            } else {
+                carrito.forEach(item => {
+                    container.innerHTML += `
+                        <div class="cart-item">
+                            <div class="item-details">
+                                <h4>${item.nombre}</h4>
+                                <p>$${item.precio.toFixed(2)} c/u - Total: $${(item.precio * item.cantidad).toFixed(2)}</p>
+                            </div>
+                            <div class="quantity-controls">
+                                <button onclick="cambiarCantidad('${item.nombre}', -1)">-</button>
+                                <span>${item.cantidad}</span>
+                                <button onclick="cambiarCantidad('${item.nombre}', 1)">+</button>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
 
-item.cantidad--;
+            const granTotal = carrito.reduce((acumulador, item) => acumulador + (item.precio * item.cantidad), 0);
+            document.getElementById('cart-total-price').innerText = granTotal.toFixed(2);
+        }
 
-if(item.cantidad<=0){
+        function abrirCarrito() { document.getElementById('cartModal').style.display = 'flex'; }
+        function cerrarCarrito() { document.getElementById('cartModal').style.display = 'none'; }
 
-carrito=
-carrito.filter(
-p=>p.id!==id
-);
+        function procesarCompra() {
+            if (carrito.length === 0) return;
+            const numeroTelefono = "8148226556"; // Reemplaza por tu WhatsApp real
+            let mensaje = "🛒 *NUEVO PEDIDO - ABARROTES El Arco*\n\n";
+            carrito.forEach(item => {
+                mensaje += `• *${item.nombre}*\n  Cantidad: ${item.cantidad} x $${item.precio.toFixed(2)} = *$${(item.precio * item.cantidad).toFixed(2)}*\n\n`;
+            });
+            const granTotal = carrito.reduce((acumulador, item) => acumulador + (item.precio * item.cantidad), 0);
+            mensaje += `--------------------------------------\n💰 *TOTAL A PAGAR: $${granTotal.toFixed(2)}*`;
+            window.open(`https://wa.me/${numeroTelefono}?text=${encodeURIComponent(mensaje)}`, '_blank');
+        }
 
-}
-
-actualizarCarrito();
-
-}
-
-function ampliarImagen(src){
-
-document.getElementById(
-"imgGrande"
-).src=src;
-
-document.getElementById(
-"modal"
-).style.display="flex";
-
-}
-
-document
-.getElementById("modal")
-.onclick=()=>{
-
-document
-.getElementById("modal")
-.style.display="none";
-
-};
-
-function enviarWhatsapp(){
-
-let mensaje=
-"Hola, deseo realizar el siguiente pedido:%0A%0A";
-
-let total=0;
-
-carrito.forEach(item=>{
-
-let subtotal=
-item.precio*item.cantidad;
-
-total+=subtotal;
-
-mensaje+=
-`${item.nombre} x${item.cantidad} = $${subtotal}%0A`;
-
-});
-
-mensaje+=`%0ATotal: $${total}`;
-
-window.open(
-`https://wa.me/${numeroWhatsApp}?text=${mensaje}`
-);
-
-}
-
-document
-.getElementById("buscador")
-.addEventListener("keyup",e=>{
-
-const texto=
-e.target.value.toLowerCase();
-
-mostrarProductos(
-
-productos.filter(p=>
-p.nombre
-.toLowerCase()
-.includes(texto)
-)
-
-);
-
-});
-
-cargarProductos();
-
-</script>
-
+        window.onload = function() { cargarProductos("Todos"); };
+    </script>
 </body>
 </html>
