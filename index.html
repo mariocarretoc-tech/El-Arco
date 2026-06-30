@@ -5,8 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Abarrotes - El Arco</title>
 <!-- <link rel="stylesheet" href="/CSS/estilos.css"> -->
+	
 <style>
-        :root {
+:root {
             --primary: #1976d2; /* Azul Medio */
             --primary-hover: #115293; 
             --secondary: #f57c00; /* Naranja */
@@ -377,7 +378,8 @@
             padding: 1.5rem;
             margin-top: 2rem;
         }
-    </style>
+</style>
+	
 </head>
 
 <body>
@@ -418,6 +420,11 @@
 		</div>
 	</main>
 
+<div class="image-lightbox" id="imageLightbox" onclick="cerrarImagenAmpliada()">
+        <span class="close-lightbox">&times;</span>
+        <img class="lightbox-content" id="lightboxImg" src="" alt="Vista ampliada">
+    </div>	
+
 	<!-- Carrito Flotante -->
 	<div class="cart-modal" id="cartModal">
 		<div class="cart-content">
@@ -433,7 +440,7 @@
 	</div>
 
 	<footer>
-		<p>&copy; 2026 Abarrotes El Arco. Todos los derechos reservados.</p>
+		<p>&copy; 2025 Abarrotes El Arco. Todos los derechos reservados.</p>
 	</footer>
 
 	<script type="text/javascript">
@@ -525,9 +532,10 @@
             }
 
             productosFiltrados.forEach((prod) => {
+                const urlImagen = prod.imagen || 'https://via.placeholder.com/300x180?text=Sin+Foto';
                 grid.innerHTML += `
                     <div class="product-card">
-                        <img src="${prod.imagen || 'https://via.placeholder.com/300x180?text=Sin+Foto'}" alt="${prod.descripcion}" class="product-img" onerror="this.src='https://via.placeholder.com/300x180?text=Sin+Foto'">
+                        <img src="${urlImagen}" alt="${prod.descripcion}" class="product-img" onclick="abrirImagenAmpliada(this.src)" onerror="this.src='https://via.placeholder.com/300x180?text=Sin+Foto'">
                         
                         <div class="product-info">
                             <span class="product-badge">${prod.departamento}</span>
@@ -538,6 +546,17 @@
                     </div>
                 `;
             });
+        }
+        
+        function abrirImagenAmpliada(srcSrc) {
+            const lightbox = document.getElementById('imageLightbox');
+            const lightboxImg = document.getElementById('lightboxImg');
+            lightboxImg.src = srcSrc;
+            lightbox.style.display = 'flex';
+        }
+
+        function cerrarImagenAmpliada() {
+            document.getElementById('imageLightbox').style.display = 'none';
         }
         
         // --- SISTEMA DEL CARRITO DE COMPRAS ---
