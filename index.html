@@ -1,4 +1,4 @@
-aaaa<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -458,7 +458,7 @@ aaaa<!DOCTYPE html>
                 if (datosLocales) {
                     productosInventario = JSON.parse(datosLocales);
                 } else {
-                    const respuesta = await fetch('productos.json');
+                    const respuesta = await fetch('productos1.json');
                     if (!respuesta.ok) throw new Error('No se pudo leer el archivo productos.json');
                     productosInventario = await respuesta.json();
                 }
