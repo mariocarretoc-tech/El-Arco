@@ -68,6 +68,24 @@
         .cart-btn:hover {
             background-color: #e65100;
         }
+	
+		.clear-cart-btn {
+            background-color: #dc3545; /* Rojo de advertencia */
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 0.6rem;
+            margin-top: 0.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+
+        .clear-cart-btn:hover {
+            background-color: #bd2130;
+        }
 
         /* Banner Principal */
         .hero {
@@ -379,7 +397,6 @@
             margin-top: 2rem;
         }
 </style>
-	
 </head>
 
 <body>
@@ -420,10 +437,10 @@
 		</div>
 	</main>
 
-<div class="image-lightbox" id="imageLightbox" onclick="cerrarImagenAmpliada()">
-        <span class="close-lightbox">&times;</span>
-        <img class="lightbox-content" id="lightboxImg" src="" alt="Vista ampliada">
-    </div>	
+        <div class="image-lightbox" id="imageLightbox" onclick="cerrarImagenAmpliada()">
+        	<span class="close-lightbox">&times;</span>
+        	<img class="lightbox-content" id="lightboxImg" src="" alt="Vista ampliada">
+        </div>	
 
 	<!-- Carrito Flotante -->
 	<div class="cart-modal" id="cartModal">
@@ -431,11 +448,13 @@
 			<span class="close-cart" onclick="cerrarCarrito()">&times;</span>
 			<h2 class="cart-title">Tu Carrito de Compras</h2>
 			<div id="cart-items-container"></div>
+
 			<div class="cart-total-section">
 				Total: $<span id="cart-total-price">0.00</span>
 			</div>
-			<button class="checkout-btn" onclick="procesarCompra()">Proceder
-				al Pago (WhatsApp)</button>
+
+			<button class="checkout-btn" onclick="procesarCompra()">Proceder al Pago (WhatsApp)</button>
+			<button class="clear-cart-btn" onclick="botonVaciarCarrito()">🗑️ Vaciar Carrito</button>
 		</div>
 	</div>
 
@@ -458,7 +477,7 @@
                 if (datosLocales) {
                     productosInventario = JSON.parse(datosLocales);
                 } else {
-                    const respuesta = await fetch('productos1.json');
+                    const respuesta = await fetch('productos.json');
                     if (!respuesta.ok) throw new Error('No se pudo leer el archivo productos.json');
                     productosInventario = await respuesta.json();
                 }
@@ -623,13 +642,60 @@
             if (carrito.length === 0) return;
             const numeroTelefono = "528148226556"; // Reemplaza por tu WhatsApp real
             let mensaje = "🛒 *NUEVO PEDIDO - ABARROTES EL ARCO*\n\n";
+
             carrito.forEach(item => {
                 mensaje += `• *${item.nombre}*\n  Cantidad: ${item.cantidad} x $${item.precio.toFixed(2)} = *$${(item.precio * item.cantidad).toFixed(2)}*\n\n`;
             });
+
             const granTotal = carrito.reduce((acumulador, item) => acumulador + (item.precio * item.cantidad), 0);
             mensaje += `--------------------------------------\n💰 *TOTAL A PAGAR: $${granTotal.toFixed(2)}*`;
+
             window.open(`https://wa.me/${numeroTelefono}?text=${encodeURIComponent(mensaje)}`, '_blank');
+
+            // === AGREGADO PARA VACIAR EL CARRITO ===
+            carrito = [];               // Vacía la lista de productos seleccionados
+            actualizarInterfaz();       // Reinicia el contador de la cabecera y limpia el modal
+            cerrarCarrito();            // Cierra el modal automáticamente (Opcional, si prefieres dejarlo abierto quita esta línea)
+
+            // === MENSAJE POPUP DE CONFIRMACIÓN ===
+            alert("¡Pedido enviado! Hemos transferido tu carrito a WhatsApp para finalizar tu compra.");
+
         }
+
+	function botonVaciarCarrito() {
+            // Verifica si hay algo que vaciar
+            if (carrito.length === 0) return;
+            
+            // Pide confirmación al usuario
+            if (confirm("¿Estás seguro de que deseas eliminar todos los productos de tu carrito?")) {
+                carrito = [];          // Vacía el arreglo
+                actualizarInterfaz();  // Reinicia los contadores visuales
+                cerrarCarrito();       // Opcional: Cierra el modal automáticamente
+
+		restablecerCategoriaTodos();
+
+                alert("El carrito ha sido vaciado.");
+            }
+        }
+
+	function restablecerCategoriaTodos() {
+    		// 1. Buscamos todos los botones de categoría
+   		const botones = document.querySelectorAll('.cat-btn');
+    
+    		botones.forEach(btn => {
+        	// 2. Le quitamos la iluminación a todos
+        	btn.classList.remove('active');
+        
+        	// 3. Iluminamos únicamente el que se llama "Todos"
+        	if (btn.textContent.trim().toLowerCase() === 'todos') {
+           	btn.classList.add('active');
+        	}
+    		});
+
+    		// 4. Cargamos los productos correspondientes
+    		cargarProductos("Todos");
+		}
+
 
      // Evento que inicia la carga de manera estructurada una vez listo el DOM
         document.addEventListener("DOMContentLoaded", () => {
@@ -637,4 +703,5 @@
         });        
     </script>
 </body>
+	
 </html>
