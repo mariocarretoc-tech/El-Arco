@@ -86,7 +86,7 @@
 {"descripcion":"Frijol Negro Refrito 580g","precio":17,"departamento":"Frijoles","imagen":"img/88.jpg"},
 {"descripcion":"Galletas Macma abanico 150g","precio":39,"departamento":"Galletas","imagen":"img/90.jpg"},
 {"descripcion":"Galletas Macma wafer natta","precio":39,"departamento":"Galletas","imagen":"img/91.jpg"},
-{"descripcion":"Garnier Express Aclara Agua micelar desmaquillante con Vitamina C Tono Uniforme, 400ml","precio":69,"departamento":"SkinCare","imagen":"img/230.jpg"},
+/*{"descripcion":"Garnier Express Aclara Agua micelar desmaquillante con Vitamina C Tono Uniforme, 400ml","precio":69,"departamento":"SkinCare","imagen":"img/230.jpg"},*/
 {"descripcion":"Gel Limpiador para Tenis y Sneakers | Elimina Suciedad Difícil","precio":29,"departamento":"Calzado","imagen":"img/92.jpg"},
 {"descripcion":"Granvita, Granola sin azúcar, con arándanos y mora azul, 1.2Kg","precio":112,"departamento":"Comida","imagen":"img/98.jpg"},
 {"descripcion":"Harpic Anti Hongos para Baños con Atomizador, 650ml, 650 mililitro","precio":53,"departamento":"Limpieza","imagen":"img/96.jpg"},
@@ -110,7 +110,7 @@
 {"descripcion":"Kleenbebé Suavelastic Toallitas Húmedas para Bebé, 2 x 99 pzas","precio":60,"departamento":"Bebé","imagen":"img/238.jpg"},
 {"descripcion":"Kleenex Cottonelle Elegance XL, Extra Largo, 18 rollos","precio":122,"departamento":"Papel Higienico","imagen":"img/103.jpg"},
 {"descripcion":"Kleenex Cottonelle Elegance XL, Extra Largo, 30 rollos","precio":200,"departamento":"Papel Higienico","imagen":"img/104.jpg"},
-{"descripcion":"Kleenex Cottonelle Elegance XL, Extra Largo, 32 rollos","precio":210,"departamento":"Papel Higienico","imagen":"img/105.jpg"},
+/*{"descripcion":"Kleenex Cottonelle Elegance XL, Extra Largo, 32 rollos","precio":210,"departamento":"Papel Higienico","imagen":"img/105.jpg"},*/
 {"descripcion":"Kleenex Cottonelle Soft, 24 Rollos de 200 Hojas Dobles C/U","precio":179,"departamento":"Papel Higienico","imagen":"img/106.jpg"},
 {"descripcion":"La Lechera Nestlé Original 375g Leche Condensada","precio":25,"departamento":"Enlatados","imagen":"img/107.jpg"},
 {"descripcion":"La Moderna Caracol No.2, 220gr","precio":11,"departamento":"Pastas","imagen":"img/108.jpg"},
@@ -207,7 +207,7 @@
 {"descripcion":"Regio Luxury Almond Touch - Hojas Dobles, 32 Rollos","precio":215,"departamento":"Papel Higienico","imagen":"img/182.jpg"},
 {"descripcion":"Regio Rinde+ Toallas de papel, 250 hojas dobles, 1 rollo","precio":27,"departamento":"Servilletas","imagen":"img/254.jpg"},
 {"descripcion":"Regio Suspiros de Lavanda, Papel Higiénico 18 rollos, 230 hojas dobles","precio":69,"departamento":"Papel Higienico","imagen":"img/183.jpg"},
-{"descripcion":"Regio Toalla de Papel 1000 Usos Rollos De 140 hojas dobles c/u","precio":29,"departamento":"Servilletas","imagen":"img/272.jpg"},
+/* {"descripcion":"Regio Toalla de Papel 1000 Usos Rollos De 140 hojas dobles c/u","precio":29,"departamento":"Servilletas","imagen":"img/272.jpg"}, */
 {"descripcion":"Saba Invisible Buenos Días, Toallas Femeninas Delgadas Con Alas 10pzas","precio":19,"departamento":"Cuidado Íntimo","imagen":"img/185.jpg"},
 {"descripcion":"Saba Invisible Buenos Días, Toallas Femeninas Delgadas Con Alas 14pzas","precio":24,"departamento":"Cuidado Íntimo","imagen":"img/186.jpg"},
 {"descripcion":"Saba Invisible Buenos Días, Toallas Femeninas Delgadas Con Alas 32pzas","precio":49,"departamento":"Cuidado Íntimo","imagen":"img/187.jpg"},
