@@ -4,13 +4,13 @@
 {"descripcion":"1-2-3 - Líquido MAXI PODER Suavizante y Jazmín 1lt","precio":28,"departamento":"Detergentes","imagen":"img/3.jpg"},
 {"descripcion":"1-2-3 - Polvo Aloe Vera 1.2Kg","precio":29,"departamento":"Detergentes","imagen":"img/4.jpg"},
 {"descripcion":"1-2-3 - Polvo Fresca Blancura 1.2Kg","precio":29,"departamento":"Detergentes","imagen":"img/5.jpg"},
-{"descripcion":"1-2-3 - Polvo Fresca lavanda 1.2Kg","precio":29,"departamento":"Detergentes","imagen":"img/6.jpg"},
-{"descripcion":"1-2-3 - Polvo Suavizante y Jazmin 1.2Kg","precio":29,"departamento":"Detergentes","imagen":"img/7.jpg"},
+
+  
 {"descripcion":"Ace Detergente en Polvo Naturals Aroma A Manzanilla 800g","precio":29,"departamento":"Detergentes","imagen":"img/8.jpg"},
-{"descripcion":"Ace.Nutrioli 946ml","precio":45,"departamento":"Comida","imagen":"img/9.jpg"},
+
 
 {"descripcion":"Antitranspirante en Barra Dove Men+Care Extra Fresh 45 g","precio":67,"departamento":"Desodorante","imagen":"img/11.jpg"},
-{"descripcion":"Arcoiris 37g","precio":4,"departamento":"Galletas","imagen":"img/12.jpg"},
+
 {"descripcion":"Ariel Limpieza Profunda a la Primera Detergente en Polvo, 750g","precio":32,"departamento":"Detergentes","imagen":"img/13.jpg"},
 {"descripcion":"Atún en Agua Tuny Clásico 75 g c/u Pouch","precio":15,"departamento":"Enlatados","imagen":"img/14.jpg"},
 {"descripcion":"Avène Protector Solar Facial FPS 50+ Mat Perfect 50 ml, Ultra Fluido","precio":419,"departamento":"SkinCare","imagen":"img/15.jpg"},
@@ -24,23 +24,22 @@
 {"descripcion":"BLUMEN Jabon Liquido Blumen Cherry Blossom 4000ml","precio":164,"departamento":"Cuidado personal","imagen":"img/44.jpg"},
 
 {"descripcion":"BOLERO, Esponja Lustradora para Zapatos con Reserva Negra 6ml","precio":32,"departamento":"Calzado","imagen":"img/25.jpg"},
-{"descripcion":"Café Blason molido 900g","precio":299,"departamento":"Café y Té","imagen":"img/27.jpg"},
-{"descripcion":"Café Mexicano 908g","precio":269,"departamento":"Café y Té","imagen":"img/28.jpg"},
+{"descripcion":"Café Blason molido 900g","precio":240,"departamento":"Café y Té","imagen":"img/27.jpg"},
+{"descripcion":"Café Mexicano 908g","precio":230,"departamento":"Café y Té","imagen":"img/28.jpg"},
 {"descripcion":"Caprice Shampoo Naturals 760 ml","precio":39,"departamento":"Shampoo","imagen":"img/29.jpg"},
 {"descripcion":"CeraVe Crema Hidratante Diaria para Rostro y Cuerpo, Piel Seca a Muy Seca","precio":219,"departamento":"SkinCare","imagen":"img/31.jpg"},
 {"descripcion":"CeraVe Gel Limpiador Espumoso Facial para Piel Mixta a Grasa con Ceramidas Esenciales, Niacinamida y Ácido Hialurónico, 473 ml","precio":269,"departamento":"SkinCare","imagen":"img/225.jpg"},
-{"descripcion":"Cereal Kelloggs Chococrispis 30g","precio":6,"departamento":"Cereal","imagen":"img/32.jpg"},
-{"descripcion":"Cereal Kelloggs CornPops 30g","precio":6,"departamento":"Cereal","imagen":"img/33.jpg"},
-{"descripcion":"Cereal Kelloggs Frootloops 30g","precio":6,"departamento":"Cereal","imagen":"img/34.jpg"},
-{"descripcion":"Cereal Kelloggs Zucaritas 30g","precio":6,"departamento":"Cereal","imagen":"img/35.jpg"},
-{"descripcion":"Cereal Kelloggs Zucaritas Chocolate30g","precio":6,"departamento":"Cereal","imagen":"img/36.jpg"},
+
+
+
+  
 {"descripcion":"Cetaphil Crema Hidratante 453 g Recomendada por Dermatólogos para Piel Sensible","precio":199,"departamento":"SkinCare","imagen":"img/231.jpg"},
 {"descripcion":"Cetaphil Crema Limpiadora Espumosa Hidratante Facial Rostro Sensible 473 ml","precio":240,"departamento":"SkinCare","imagen":"img/37.jpg"},
 {"descripcion":"Cetaphil Gel Limpiador Facial Diario Piel Mixta Grasa Niacinamida B3 473 ml","precio":229,"departamento":"SkinCare","imagen":"img/227.jpg"},
 {"descripcion":"Cetaphil Loción Humectante Facial Corporal Textura Ligera Piel Mixta 473 ml","precio":207,"departamento":"SkinCare","imagen":"img/269.jpg"},
-{"descripcion":"Chicolastic Classic, Toallas Húmedas para Bebé, 120 pzas","precio":22,"departamento":"Bebé","imagen":"img/208.jpg"},
-{"descripcion":"Chokis 38g","precio":4,"departamento":"Galletas","imagen":"img/38.jpg"},
-{"descripcion":"Clavel Leche Evaporada Lata De 360 Gr, 360 g","precio":20,"departamento":"Enlatados","imagen":"img/39.jpg"},
+{"descripcion":"Chicolastic Classic, Toallas Húmedas para Bebé, 120 pzas","precio":20,"departamento":"Bebé","imagen":"img/208.jpg"},
+
+{"descripcion":"Clavel Leche Evaporada Lata De 360 Gr, 360 g","precio":22,"departamento":"Enlatados","imagen":"img/39.jpg"},
 {"descripcion":"Cloralex El Rendidor Blanqueador 950ml","precio":18,"departamento":"Limpieza","imagen":"img/40.jpg"},
 {"descripcion":"Cloralex Gel Blanqueador Desinfectante 950ml","precio":20,"departamento":"Limpieza","imagen":"img/41.jpg"},
 {"descripcion":"Cloralex Ultra Gel Poder Desmanchador 950ml","precio":28,"departamento":"Limpieza","imagen":"img/42.jpg"},
@@ -64,30 +63,30 @@
 {"descripcion":"eGo Black For Men Tarro 950ml","precio":69,"departamento":"Cuidado personal","imagen":"img/66.jpg"},
 {"descripcion":"eGo FOR MEN Shampoo Control Caida 2 en 1 400ml","precio":63,"departamento":"Shampoo","imagen":"img/67.jpg"},
 {"descripcion":"eGo Gel Cabello Diez, Gris, 950 ml","precio":69,"departamento":"Cuidado personal","imagen":"img/68.jpg"},
-{"descripcion":"Elite Cuidado Clásico Doble Hoja 12 Rollos","precio":65,"departamento":"Papel Higienico","imagen":"img/69.jpg"},
-{"descripcion":"Elite Cuidado Clásico Doble Hoja 32 Rollos","precio":150,"departamento":"Papel Higienico","imagen":"img/70.jpg"},
-{"descripcion":"Elite Dúo Papel Higiénico con Hoja Doble - 1 Pack x 12 Rollos","precio":69,"departamento":"Papel Higienico","imagen":"img/71.jpg"},
+
+{"descripcion":"Elite Cuidado Clásico Doble Hoja 32 Rollos","precio":145,"departamento":"Papel Higienico","imagen":"img/70.jpg"},
+
 
 {"descripcion":"Elite Soft & Strong Papel Higiénico Triple Hoja 18 Rollos","precio":120,"departamento":"Papel Higienico","imagen":"img/73.jpg"},
 {"descripcion":"Elite Soft & Strong Papel Higiénico Triple Hoja 32 Rollos","precio":210,"departamento":"Papel Higienico","imagen":"img/74.jpg"},
 {"descripcion":"Elite Ultra Servilletas 420 Piezas","precio":59,"departamento":"Servilletas","imagen":"img/75.jpg"},
 
   
-{"descripcion":"Emperador Chocolate 40g","precio":4,"departamento":"Galletas","imagen":"img/78.jpg"},
-{"descripcion":"Emperador Vainilla 40g","precio":4,"departamento":"Galletas","imagen":"img/79.jpg"},
+
+  
 {"descripcion":"Escudo Antibacterial 135gr","precio":15,"departamento":"Jabón Corporal","imagen":"img/80.jpg"},
 {"descripcion":"Eucerin Ph5 Loción Corporal Hidratante para Piel Seca O Sensible, 400ml","precio":249,"departamento":"SkinCare","imagen":"img/81.jpg"},
 {"descripcion":"Fabuloso Lavanda 2L","precio":42,"departamento":"Limpieza","imagen":"img/82.jpg"},
 {"descripcion":"Fabuloso Limpiador Multiusos Pasión de Frutas 2 x 2 L. Antiviral y Antibacter.","precio":44,"departamento":"Limpieza","imagen":"img/84.jpg"},
-{"descripcion":"Fabuloso Líquido Eucalipto y Cítricos 1.7 L. 0% Amoníaco y Parabenos","precio":69,"departamento":"Limpieza","imagen":"img/83.jpg"},
-{"descripcion":"Fancy Servilleta, Paquete con 360 piezas de hoja sencilla","precio":28,"departamento":"Servilletas","imagen":"img/85.jpg"},
+
+
 {"descripcion":"Flash desinfectante con aroma a Limon 1L","precio":19,"departamento":"Limpieza","imagen":"img/86.jpg"},
 {"descripcion":"Frijol Bayo Refrito 580g","precio":17,"departamento":"Frijoles","imagen":"img/87.jpg"},
 {"descripcion":"Frijol Negro Refrito 580g","precio":17,"departamento":"Frijoles","imagen":"img/88.jpg"},
 {"descripcion":"Galletas Macma abanico 150g","precio":39,"departamento":"Galletas","imagen":"img/90.jpg"},
 {"descripcion":"Galletas Macma wafer natta","precio":39,"departamento":"Galletas","imagen":"img/91.jpg"},
 {"descripcion":"Gel Limpiador para Tenis y Sneakers | Elimina Suciedad Difícil","precio":29,"departamento":"Calzado","imagen":"img/92.jpg"},
-{"descripcion":"Granvita, Granola sin azúcar, con arándanos y mora azul, 1.2Kg","precio":112,"departamento":"Comida","imagen":"img/98.jpg"},
+{"descripcion":"Granvita, Granola sin azúcar, con arándanos y mora azul, 1.2Kg","precio":120,"departamento":"Comida","imagen":"img/98.jpg"},
 {"descripcion":"Harpic Anti Hongos para Baños con Atomizador, 650ml, 650 mililitro","precio":53,"departamento":"Limpieza","imagen":"img/96.jpg"},
 {"descripcion":"Harpic TBC Líquido Extra Fuerte 750ml 750 ml","precio":49,"departamento":"Limpieza","imagen":"img/97.jpg"},
 {"descripcion":"Herbal Essences Acondicionador Pelo Largo Granada Y Proteína Vegana 600 ml","precio":97,"departamento":"Shampoo","imagen":"img/233.jpg"},
@@ -106,37 +105,39 @@
 {"descripcion":"Isadora Frijoles Refritos Negros - 400 g","precio":16,"departamento":"Frijoles","imagen":"img/274.jpg"},
 
 {"descripcion":"Kleenbebé Suavelastic Toallitas Húmedas para Bebé, 108 pzas","precio":33,"departamento":"Bebé","imagen":"img/209.jpg"},
-{"descripcion":"Kleenbebé Suavelastic Toallitas Húmedas para Bebé, 2 x 99 pzas","precio":60,"departamento":"Bebé","imagen":"img/238.jpg"},
+
 {"descripcion":"Kleenex Cottonelle Elegance XL, Extra Largo, 18 rollos","precio":122,"departamento":"Papel Higienico","imagen":"img/103.jpg"},
 
 {"descripcion":"Kleenex Cottonelle Soft, 24 Rollos de 200 Hojas Dobles C/U","precio":179,"departamento":"Papel Higienico","imagen":"img/106.jpg"},
 {"descripcion":"La Lechera Nestlé Original 375g Leche Condensada","precio":25,"departamento":"Enlatados","imagen":"img/107.jpg"},
-{"descripcion":"La Moderna Caracol No.2, 220gr","precio":11,"departamento":"Pastas","imagen":"img/108.jpg"},
+{"descripcion":"La Moderna Caracol No.2, 220gr","precio":10,"departamento":"Pastas","imagen":"img/108.jpg"},
 {"descripcion":"La Moderna Codo 2, Pasta Para Sopa, 450 gr","precio":20,"departamento":"Pastas","imagen":"img/262.jpg"},
-{"descripcion":"La Moderna, Letra, 220gr","precio":12,"departamento":"Pastas","imagen":"img/110.jpg"},
+{"descripcion":"La Moderna, Letra, 220gr","precio":10,"departamento":"Pastas","imagen":"img/110.jpg"},
 {"descripcion":"La Moderna, Moñito, 220gr","precio":10,"departamento":"Pastas","imagen":"img/111.jpg"},
 {"descripcion":"Leche Lala Deslactosada Light, Pack de 10 piezas por 1.5 L c/u","precio":399,"departamento":"Leche","imagen":"img/228.jpg"},
-{"descripcion":"LECHE UHT SAN MARCOS DESLACTOSADA LIGHT C/","precio":169,"departamento":"Leche","imagen":"img/112.jpg"},
+
 {"descripcion":"LISTERINE Enjuague Bucal Control Sarro Zero Alcohol 500 ml","precio":99,"departamento":"Higiene Bucal","imagen":"img/113.jpg"},
 {"descripcion":"Listerine, Enjuague Bucal Cool Mint Zero Alcohol 500 Ml","precio":79,"departamento":"Higiene Bucal","imagen":"img/114.jpg"},
 {"descripcion":"L'Oréal Paris UV Defender Fluido Invisible FPS 50+","precio":141,"departamento":"SkinCare","imagen":"img/115.jpg"},
-{"descripcion":"Macma galletas surtido Dejú 280g","precio":74,"departamento":"Galletas","imagen":"img/116.jpg"},
-{"descripcion":"Macma surtido galletas 330g","precio":74,"departamento":"Galletas","imagen":"img/117.jpg"},
+{"descripcion":"Macma galletas surtido Dejú 280g","precio":70,"departamento":"Galletas","imagen":"img/116.jpg"},
+{"descripcion":"Macma surtido galletas 330g","precio":70,"departamento":"Galletas","imagen":"img/117.jpg"},
 {"descripcion":"MAIZENA FECULA DE MAIZ ATOLE Sabor Chocolate 45g","precio":11,"departamento":"Comida","imagen":"img/261.jpg"},
 {"descripcion":"MAIZENA FECULA DE MAIZ ATOLE Sabor Vainilla 47g","precio":9,"departamento":"Comida","imagen":"img/118.jpg"},
 {"descripcion":"MAS - Bebé Detergente Líquido para Ropa de Bebé 62 Cargas 4.65lt","precio":139,"departamento":"Detergentes","imagen":"img/119.jpg"},
 {"descripcion":"MAS - Color Detergente Líquido Renueva el Color de la Ropa 4.65lt","precio":156,"departamento":"Detergentes","imagen":"img/120.jpg"},
 {"descripcion":"MAS - Colores intensos 830ml","precio":31,"departamento":"Detergentes","imagen":"img/121.jpg"},
 {"descripcion":"MAS - Detergente Líquido Frescura Intensa para Telas Mixtas 4.65lt","precio":152,"departamento":"Detergentes","imagen":"img/122.jpg"},
-{"descripcion":"MAS - Oscura Oscuros Intensos 4.65lt","precio":170,"departamento":"Detergentes","imagen":"img/123.jpg"},
-{"descripcion":"MAS - Oscuros intensos 830 ml","precio":31,"departamento":"Detergentes","imagen":"img/124.jpg"},
+  
+
+
+
 {"descripcion":"Maybelline mascara","precio":149,"departamento":"SkinCare","imagen":"img/125.jpg"},
 {"descripcion":"McCormick Té de Hierbabuena 50 sobres","precio":34,"departamento":"Café y Té","imagen":"img/264.jpg"},
 {"descripcion":"McCormick Té de Limón 50 sobres Alicia, 1.2g c/u","precio":33,"departamento":"Café y Té","imagen":"img/265.jpg"},
 {"descripcion":"McCormick Té de Manzanilla 50 sobres","precio":35,"departamento":"Café y Té","imagen":"img/226.jpg"},
 {"descripcion":"McCormick Té Manzanilla Cúrcuma Sabor Vainilla Miel 20 sobres","precio":24,"departamento":"Café y Té","imagen":"img/126.jpg"},
 {"descripcion":"McCormick, Té de Jamaica, 25 piezas","precio":34,"departamento":"Café y Té","imagen":"img/266.jpg"},
-{"descripcion":"Mini Mamut 12g","precio":4,"departamento":"Galletas","imagen":"img/127.jpg"},
+
 {"descripcion":"Mr Musculo Limpiador De Cocina Desengrasante Platinum 650 ml","precio":38,"departamento":"Limpieza","imagen":"img/128.jpg"},
 {"descripcion":"Mr Musculo Pato DESENGRASANTE NARANJA 650ML","precio":32,"departamento":"Limpieza","imagen":"img/129.jpg"},
 {"descripcion":"Mustela, Crema Contra las Rozaduras para Bebé 123, 108g","precio":119,"departamento":"Bebé","imagen":"img/130.jpg"},
@@ -177,7 +178,7 @@
 {"descripcion":"Pato Discos Activos con Aplicador Para Baño Lima 36 ml","precio":32,"departamento":"Limpieza","imagen":"img/149.jpg"},
 {"descripcion":"Pato Limpiador Líquido Desinfectante Sanitarios Brisa de Mar 500 ml","precio":46,"departamento":"Limpieza","imagen":"img/150.jpg"},
 {"descripcion":"Persil - Detergente en Polvo Universal 900gr para Ropa Acción Profunda","precio":32,"departamento":"Detergentes","imagen":"img/153.jpg"},
-{"descripcion":"Persil - Detergente Gel Alta Higiene 4.65L Acción Profunda","precio":159,"departamento":"Detergentes","imagen":"img/154.jpg"},
+{"descripcion":"Persil - Detergente Gel Alta Higiene 4.65L Acción Profunda","precio":150,"departamento":"Detergentes","imagen":"img/154.jpg"},
 {"descripcion":"Persil - Gel Colores Vivos 4.65L Detergente ","precio":170,"departamento":"Detergentes","imagen":"img/155.jpg"},
 {"descripcion":"Pétalo Colores Servilletas, Paquete con 350 Piezas de Hojas Sencillas","precio":52,"departamento":"Servilletas","imagen":"img/156.jpg"},
 {"descripcion":"Pétalo Compact Clean, Servitoalla, 1 Rollo con 200 Hojas","precio":12,"departamento":"Servilletas","imagen":"img/162.jpg"},
@@ -215,7 +216,7 @@
 {"descripcion":"Saba Ultra Invisible Buenas Noches con alas 10 pzas","precio":28,"departamento":"Cuidado Íntimo","imagen":"img/192.jpg"},
 {"descripcion":"Saba Ultra Invisible Buenas Noches con alas 22 pzas","precio":55,"departamento":"Cuidado Íntimo","imagen":"img/193.jpg"},
 {"descripcion":"Saba Ultra Invisible Buenas Noches con alas 30 pzas","precio":66,"departamento":"Cuidado Íntimo","imagen":"img/194.jpg"},
-{"descripcion":"Saladitas Galletas Clásicas 504 g","precio":46,"departamento":"Galletas","imagen":"img/256.jpg"},
+
 {"descripcion":"Salvo Limón Lavatrastes Líquido Total 2.6 L","precio":120,"departamento":"Lavatrastes","imagen":"img/196.jpg"},
 {"descripcion":"Salvo Limón Lavatrastes Líquido, Triple Poder Cortagrasa 1.4L","precio":65,"departamento":"Lavatrastes","imagen":"img/195.jpg"},
 {"descripcion":"Savilé Shampoo Menta y Eucalipto, Blanco, 1000 ml","precio":49,"departamento":"Shampoo","imagen":"img/197.jpg"},
@@ -224,27 +225,27 @@
 {"descripcion":"Sedal Crema para Peinar Quinoa y Linaza 300 ml","precio":39,"departamento":"Cuidado personal","imagen":"img/257.jpg"},
 {"descripcion":"Sedal Crema para Peinar Toque de Seda, 300 mL","precio":39,"departamento":"Cuidado personal","imagen":"img/258.jpg"},
 {"descripcion":"Sedal Shampoo Toque de Seda, 2% Amino-Silk Complex. 100 h de Suavidad en 1 min*. Cabello 100% más Sedoso. Control del Frizz*, 620 mL","precio":64,"departamento":"Shampoo","imagen":"img/259.jpg"},
-{"descripcion":"Shampoo 3 En 1 HoneyKeeper Lavanda 414ml","precio":69,"departamento":"Shampoo","imagen":"img/198.jpg"},
+
 {"descripcion":"Shampoo 3 En 1 HoneyKeeper Manzanilla 750ml","precio":95,"departamento":"Shampoo","imagen":"img/200.jpg"},
 {"descripcion":"Shampoo Sedal Rizos Definidos 620 ml","precio":55,"departamento":"Shampoo","imagen":"img/260.jpg"},
 {"descripcion":"ST IVES Crema Corporal Colágeno y Elastina Piel Renovada 532ml","precio":62,"departamento":"Cuidado personal","imagen":"img/232.jpg"},
 {"descripcion":"ST IVES Crema Corporal Olivo y Aceite de Arándano 532 ml","precio":62,"departamento":"Cuidado personal","imagen":"img/51.jpg"},
-{"descripcion":"Suavel Servilletas, 380 Piezas","precio":35,"departamento":"Servilletas","imagen":"img/202.jpg"},
+
 {"descripcion":"Suavitel Cuidado Superior Fresca Primavera 740ml","precio":20,"departamento":"Suavizantes","imagen":"img/206.jpg"},
 {"descripcion":"Tajín Mini Salsa en Polvo de Chile con Limón 10g","precio":5,"departamento":"Botana","imagen":"img/263.jpg"},
 {"descripcion":"Therbal Infusión Ciruela 25 Saquitos","precio":32,"departamento":"Café y Té","imagen":"img/268.jpg"},
-{"descripcion":"VANART - Shampoo Reparación Brillante y Nutrición. Con aceite de coco natural y keratina. Botella con 750ml.","precio":35,"departamento":"Shampoo","imagen":"img/278.jpg"},
+{"descripcion":"VANART Shampoo Reparación Brillante y Nutrición. Con aceite de coco natural y keratina. Botella con 750ml.","precio":35,"departamento":"Shampoo","imagen":"img/278.jpg"},
 {"descripcion":"VANART Shampoo Clásico Dúo, Cabello limpio y manejable, fórmula balanceada, Botella con 750ml","precio":29,"departamento":"Shampoo","imagen":"img/280.jpg"},
 {"descripcion":"VANART Shampoo Crematizado, Complejo Humectante y cabello suave, Botella con 750ml","precio":35,"departamento":"Shampoo","imagen":"img/246.jpg"},
 {"descripcion":"VANART Shampoo Reparación Brillante y Nutrición, Con aceite de coco natural y leche de avena, Botella con 750ml","precio":35,"departamento":"Shampoo","imagen":"img/281.jpg"},
 {"descripcion":"VANART Shampoo Reparación Brillante y Nutrición, Con aceite de coco natural y miel, Botella con 750ml","precio":35,"departamento":"Shampoo","imagen":"img/247.jpg"},
-{"descripcion":"Vel Rosita Shampoo Líquido para Ropa Delicada 500 ml","precio":35,"departamento":"Detergentes","imagen":"img/210.jpg"},
+
 {"descripcion":"Vinagre Blanco, Barrilito Alcohol Caña, 3900 Mililitros","precio":42,"departamento":"Limpieza","imagen":"img/211.jpg"},
 {"descripcion":"Viva Detergente En Polvo Regular 850 g","precio":29,"departamento":"Detergentes","imagen":"img/213.jpg"},
-{"descripcion":"Yemina Pasta Concha No.1, 200g","precio":11,"departamento":"Pastas","imagen":"img/214.jpg"},
+{"descripcion":"Yemina Pasta Concha No.1, 200g","precio":9,"departamento":"Pastas","imagen":"img/214.jpg"},
 {"descripcion":"Yemina Pasta Spaghetti 200 g","precio":9,"departamento":"Pastas","imagen":"img/215.jpg"},
 {"descripcion":"Yemina Sopa de Codo Liso No. 1, 200 g","precio":9,"departamento":"Pastas","imagen":"img/216.jpg"},
-{"descripcion":"Yemina Sopa de Codo Liso No. 2, 200 g","precio":8,"departamento":"Pastas","imagen":"img/217.jpg"},
+{"descripcion":"Yemina Sopa de Codo Liso No. 2, 200 g","precio":9,"departamento":"Pastas","imagen":"img/217.jpg"},
 {"descripcion":"Zest Aqua 90gr","precio":12,"departamento":"Jabón Corporal","imagen":"img/218.jpg"},
 {"descripcion":"Zest Aqua, Jabón en Barra 135 g","precio":15,"departamento":"Jabón Corporal","imagen":"img/236.jpg"},
 {"descripcion":"Zest Jabón de Tocador, Toronja/Albahaca, 90 gr","precio":11,"departamento":"Jabón Corporal","imagen":"img/253.jpg"},
