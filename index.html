@@ -4,399 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Abarrotes - El Arco</title>
-<!-- <link rel="stylesheet" href="/CSS/estilos.css"> -->
-	
-<style>
-:root {
-            --primary: #1976d2; /* Azul Medio */
-            --primary-hover: #115293; 
-            --secondary: #f57c00; /* Naranja */
-            --dark: #333;
-            --light: #f9f9f9;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: var(--light);
-            color: var(--dark);
-        }
-
-        /* Cabecera y Navegación */
-        header {
-            background-color: var(--primary);
-            color: white;
-            padding: 1rem 2rem;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .logo h1 {
-            font-size: 1.5rem;
-        }
-
-        .nav-controls {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .cart-btn {
-            background-color: var(--secondary);
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background 0.2s;
-        }
-        
-        .cart-btn:hover {
-            background-color: #e65100;
-        }
-	
-		.clear-cart-btn {
-            background-color: #dc3545; /* Rojo de advertencia */
-            color: white;
-            border: none;
-            width: 100%;
-            padding: 0.6rem;
-            margin-top: 0.5rem;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            font-weight: bold;
-            transition: background 0.2s;
-        }
-
-        .clear-cart-btn:hover {
-            background-color: #bd2130;
-        }
-
-        /* Banner Principal */
-        .hero {
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
-            height: 180px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            text-align: center;
-            padding: 0 1rem;
-        }
-
-        .hero h2 {
-            font-size: 2.3rem;
-            margin-bottom: 0.5rem;
-        }
-
-        /* Barra de búsqueda */
-        .search-container {
-            max-width: 1200px;
-            margin: 1.5rem auto 0 auto;
-            padding: 0 1rem;
-        }
-
-        .search-wrapper {
-            position: relative;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        .search-input {
-            width: 100%;
-            padding: 0.8rem 1.2rem;
-            border: 2px solid var(--primary);
-            border-radius: 25px;
-            font-size: 1rem;
-            outline: none;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            transition: box-shadow 0.2s;
-        }
-
-        .search-input:focus {
-            box-shadow: 0 3px 8px rgba(25, 118, 210, 0.2);
-        }
-
-        /* Categorías */
-        .categories {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            padding: 1.5rem 1rem 2rem 1rem;
-            flex-wrap: wrap;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .cat-btn {
-            background: white;
-            border: 2px solid var(--primary);
-            color: var(--primary);
-            padding: 0.5rem 1.5rem;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: 0.3s;
-            text-transform: capitalize;
-        }
-
-        .cat-btn:hover, .cat-btn.active {
-            background-color: var(--primary);
-            color: white;
-        }
-
-        /* Contenedor de Productos */
-        .products-section {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1rem 3rem 1rem;
-        }
-
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 1.5rem;
-        }
-
-        /* Tarjeta de Producto */
-        .product-card {
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            position: relative;
-            transition: transform 0.2s;
-        }
-
-        .product-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .product-img {
-            width: 100%;
-            height: 180px;
-            object-fit: contain;
-            background-color: #fff;
-            padding: 1rem;
-            border-bottom: 1px solid #f0f0f0;
-            cursor: zoom-in; /* Indica visualmente que se puede ampliar */
-        }
-
-        .product-info {
-            padding: 1rem;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-            justify-content: space-between;
-            gap: 0.5rem;
-        }
-
-        .product-title {
-            font-size: 1rem;
-            color: #333;
-            min-height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .product-badge {
-            font-size: 0.75rem;
-            background-color: #e3f2fd;
-            color: var(--primary);
-            padding: 0.2rem 0.6rem;
-            border-radius: 10px;
-            align-self: center;
-            font-weight: 600;
-        }
-
-        .product-price {
-            color: var(--primary);
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-
-        .add-to-cart {
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            padding: 0.6rem;
-            width: 100%;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background 0.2s;
-            margin-top: 0.5rem;
-        }
-
-        .add-to-cart:hover {
-            background-color: var(--primary-hover);
-        }
-
-        /* Carrito Modal */
-        .cart-modal {
-            display: none; 
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .cart-content {
-            background-color: white;
-            padding: 2rem;
-            border-radius: 10px;
-            width: 90%;
-            max-width: 500px;
-            max-height: 80vh;
-            overflow-y: auto;
-            position: relative;
-        }
-
-        .close-cart {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        .cart-title {
-            margin-bottom: 1.5rem;
-            border-bottom: 2px solid #eee;
-            padding-bottom: 0.5rem;
-            color: var(--primary);
-        }
-
-        .cart-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid #eee;
-        }
-
-        .quantity-controls button {
-            background-color: #eee;
-            border: none;
-            padding: 0.2rem 0.6rem;
-            cursor: pointer;
-            font-weight: bold;
-            border-radius: 3px;
-        }
-
-        .quantity-controls span {
-            margin: 0 0.5rem;
-            font-weight: bold;
-        }
-
-        .cart-total-section {
-            margin-top: 1.5rem;
-            text-align: right;
-            font-size: 1.2rem;
-            font-weight: bold;
-            border-top: 2px solid #eee;
-            padding-top: 1rem;
-        }
-
-        .checkout-btn {
-            background-color: var(--secondary);
-            color: white;
-            border: none;
-            width: 100%;
-            padding: 0.8rem;
-            margin-top: 1rem;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: bold;
-        }
-
-        .checkout-btn:hover {
-            background-color: #e65100;
-        }
-
-        .empty-message {
-            text-align: center;
-            color: #888;
-            margin: 2rem 0;
-        }
-
-        /* MODAL DE VISTA AMPLIADA DE IMAGEN */
-        .image-lightbox {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.85);
-            z-index: 3000; /* Por encima de todo */
-            justify-content: center;
-            align-items: center;
-            cursor: zoom-out;
-        }
-
-        .lightbox-content {
-            max-width: 90%;
-            max-height: 85vh;
-            object-fit: contain;
-            border-radius: 4px;
-            box-shadow: 0 5px 25px rgba(0,0,0,0.5);
-            background: white;
-            padding: 0.5rem;
-            animation: zoomInEffect 0.25s ease-out;
-        }
-
-        .close-lightbox {
-            position: absolute;
-            top: 1.5rem;
-            right: 2rem;
-            color: white;
-            font-size: 2.5rem;
-            cursor: pointer;
-            user-select: none;
-        }
-
-        @keyframes zoomInEffect {
-            from { transform: scale(0.8); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
-        }
-
-        footer {
-            background-color: #222;
-            color: white;
-            text-align: center;
-            padding: 1.5rem;
-            margin-top: 2rem;
-        }
-</style>
+<link rel="stylesheet" href="CSS/estilos.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛒</text></svg>">
 </head>
 
 <body>
@@ -453,7 +62,7 @@
 				Total: $<span id="cart-total-price">0.00</span>
 			</div>
 
-			<button class="checkout-btn" onclick="procesarCompra()">Proceder al Envío del pedido (WhatsApp)</button>
+			<button class="checkout-btn" onclick="procesarCompra()">Proceder al Pago (WhatsApp)</button>
 			<button class="clear-cart-btn" onclick="botonVaciarCarrito()">🗑️ Vaciar Carrito</button>
 		</div>
 	</div>
@@ -462,55 +71,67 @@
 		<p>&copy; 2025 Abarrotes El Arco. Todos los derechos reservados.</p>
 	</footer>
 
-	<script type="text/javascript">
+<script type="text/javascript">
 	
         let categoriaActual = "Todos";
         let textoBusqueda = "";
 		let productosInventario = [];
         let carrito = [];
+
+	let paginaActual = 1;
+	let productosPorPagina = 14; // Cambia este número según cuántos quieras mostrar por vista
        
-     // Carga los datos de forma asíncrona desde el archivo JSON externo o LocalStorage
+        // Carga de forma asíncrona tanto el catálogo como el inventario/existencias
         async function inicializarCatalogo() {
             try {
-                const datosLocales = localStorage.getItem('inventario_tienda');
-                
-                if (datosLocales) {
-                    productosInventario = JSON.parse(datosLocales);
-                } else {
-                    const respuesta = await fetch('productos.json');
-                    if (!respuesta.ok) throw new Error('No se pudo leer el archivo productos.json');
-                    productosInventario = await respuesta.json();
-                }
+                // 1. Cargamos de forma paralela productos.json y existencias.json
+                const [respProductos, respExistencias] = await Promise.all([
+                    fetch('productos.json'),
+                    fetch('existencias.json') // <--- Archivo que evalúa el stock
+                ]);
+
+                if (!respProductos.ok) throw new Error('No se pudo leer el archivo productos.json');
+                if (!respExistencias.ok) throw new Error('No se pudo leer el archivo existencias.json');
+
+                const todosLosProductos = await respProductos.json();
+                const existencias = await respExistencias.json();
+
+                // 2. Creamos un mapa o diccionario rápido para buscar el stock por ID o Descripción
+                // (Asumiendo que tus productos tienen una propiedad 'id' o 'codigo', si usan 'descripcion', cámbialo abajo)
+                const mapaStock = {};
+                existencias.forEach(item => {
+                    // Usamos 'id' o 'descripcion' como llave de enlace
+                    mapaStock[item.id] = item.stock; 
+                });
+
+                // 3. Filtramos los productos según las existencias (ej. stock > 0)
+                productosInventario = todosLosProductos.filter(prod => {
+                    const stockDisponible = mapaStock[prod.id] !== undefined ? mapaStock[prod.id] : 0;
+                    return stockDisponible > 0; // Solo muestra si hay stock mayor a 0
+                });
                 
                 generarCategoriasDinamicas();
                 cargarProductos("Todos");
             } catch (error) {
-                console.error("Error al cargar el catálogo:", error);
+                console.error("Error al cargar el catálogo o existencias:", error);
                 document.getElementById('products-grid-container').innerHTML = `
                     <p style="grid-column: 1/-1; text-align: center; padding: 2rem; color: red; font-weight: bold;">
-                        Error al cargar los productos. Asegúrate de que el archivo productos.json exista y de ejecutar la página desde un entorno de servidor web local.
+                        Error al cargar el inventario o las existencias. Verifica que los archivos existan y estés usando un servidor local.
                     </p>
                 `;
             }
-        }        
+        }       
 
         function generarCategoriasDinamicas() {
             const container = document.getElementById('categories-container');
             if (!container) return;
 
-            // Extraemos todos los departamentos eliminando duplicados mediante un 'Set'
             const departamentosUnicos = [...new Set(productosInventario.map(p => p.departamento))];
-            
-            // Filtramos valores vacíos por si acaso
             const departamentosFiltrados = departamentosUnicos.filter(dept => dept && dept.trim() !== "");
-
-            // Ordenamos alfabéticamente para que se vea estético
             departamentosFiltrados.sort();
 
-            // Insertamos siempre el botón de "Todos" al principio
             let HTMLBotones = `<button class="cat-btn active" onclick="filtrarCategoria('Todos', this)">Todos</button>`;
 
-            // Creamos un botón para cada departamento encontrado
             departamentosFiltrados.forEach(dept => {
                 HTMLBotones += `<button class="cat-btn" onclick="filtrarCategoria('${dept}', this)">${dept}</button>`;
             });
@@ -524,17 +145,22 @@
             cargarProductos(categoriaActual);
         }
 
-        function cargarProductos(categoriaSeleccionada = "Todos") {
-           
+function cargarProductos(categoriaSeleccionada = "Todos", reiniciarPagina = true) {
+            if (reiniciarPagina) {
+                paginaActual = 1; // Si cambia de categoría o busca, regresamos a la página 1
+            }
+
             categoriaActual = categoriaSeleccionada;
             const grid = document.getElementById('products-grid-container');
             if(!grid) return;
             grid.innerHTML = ""; 
 
+            // 1. Filtrar por categoría
             let productosFiltrados = categoriaSeleccionada === "Todos" 
                 ? productosInventario 
                 : productosInventario.filter(p => p.departamento === categoriaSeleccionada);
 
+            // 2. Filtrar por texto de búsqueda
             if (textoBusqueda !== "") {
                 productosFiltrados = productosFiltrados.filter(p => 
                     p.descripcion.toLowerCase().includes(textoBusqueda)
@@ -544,13 +170,24 @@
             if (productosFiltrados.length === 0) {
                 grid.innerHTML = `
                     <div style="grid-column: 1/-1; text-align: center; color: #888; padding: 3rem 1rem;">
-                        <p style="font-size: 1.2rem; font-weight: 500;">No encontramos productos que coincidan con tu búsqueda.</p>
+                        <p style="font-size: 1.2rem; font-weight: 500;">No hay productos disponibles en este momento.</p>
                     </div>
                 `;
+                // Eliminamos controles de paginación si no hay resultados
+                removerControlesPaginacion();
                 return;
             }
 
-            productosFiltrados.forEach((prod) => {
+            // 3. --- CÁLCULO DE PAGINACIÓN ---
+            const totalPaginas = Math.ceil(productosFiltrados.length / productosPorPagina);
+            if (paginaActual > totalPaginas) paginaActual = totalPaginas;
+
+            const inicio = (paginaActual - 1) * productosPorPagina;
+            const fin = inicio + productosPorPagina;
+            const productosPaginaActual = productosFiltrados.slice(inicio, fin);
+
+            // 4. Renderizar solo los productos de esta página
+            productosPaginaActual.forEach((prod) => {
                 const urlImagen = prod.imagen || 'https://via.placeholder.com/300x180?text=Sin+Foto';
                 grid.innerHTML += `
                     <div class="product-card">
@@ -565,6 +202,9 @@
                     </div>
                 `;
             });
+
+            // 5. Renderizar botones de paginación abajo de la cuadrícula
+            renderizarControlesPaginacion(totalPaginas);
         }
         
         function abrirImagenAmpliada(srcSrc) {
@@ -578,7 +218,6 @@
             document.getElementById('imageLightbox').style.display = 'none';
         }
         
-        // --- SISTEMA DEL CARRITO DE COMPRAS ---
         function filtrarCategoria(categoria, boton) {
             const botones = document.querySelectorAll('.cat-btn');
             botones.forEach(btn => btn.classList.remove('active'));
@@ -640,7 +279,7 @@
 
         function procesarCompra() {
             if (carrito.length === 0) return;
-            const numeroTelefono = "528148226556"; // Reemplaza por tu WhatsApp real
+            const numeroTelefono = "528148226556";
             let mensaje = "🛒 *NUEVO PEDIDO - ABARROTES EL ARCO*\n\n";
 
             carrito.forEach(item => {
@@ -652,56 +291,71 @@
 
             window.open(`https://wa.me/${numeroTelefono}?text=${encodeURIComponent(mensaje)}`, '_blank');
 
-            // === AGREGADO PARA VACIAR EL CARRITO ===
-            carrito = [];               // Vacía la lista de productos seleccionados
-            actualizarInterfaz();       // Reinicia el contador de la cabecera y limpia el modal
-            cerrarCarrito();            // Cierra el modal automáticamente (Opcional, si prefieres dejarlo abierto quita esta línea)
-
-            // === MENSAJE POPUP DE CONFIRMACIÓN ===
+            carrito = [];            
+            actualizarInterfaz();        
+            cerrarCarrito();            
             alert("¡Pedido enviado! Hemos transferido tu carrito a WhatsApp para finalizar tu compra.");
-
         }
 
-	function botonVaciarCarrito() {
-            // Verifica si hay algo que vaciar
+        function botonVaciarCarrito() {
             if (carrito.length === 0) return;
-            
-            // Pide confirmación al usuario
             if (confirm("¿Estás seguro de que deseas eliminar todos los productos de tu carrito?")) {
-                carrito = [];          // Vacía el arreglo
-                actualizarInterfaz();  // Reinicia los contadores visuales
-                cerrarCarrito();       // Opcional: Cierra el modal automáticamente
-
-		restablecerCategoriaTodos();
-
+                carrito = [];          
+                actualizarInterfaz();  
+                cerrarCarrito();       
+                restablecerCategoriaTodos();
                 alert("El carrito ha sido vaciado.");
             }
         }
 
-	function restablecerCategoriaTodos() {
-    		// 1. Buscamos todos los botones de categoría
-   		const botones = document.querySelectorAll('.cat-btn');
-    
-    		botones.forEach(btn => {
-        	// 2. Le quitamos la iluminación a todos
-        	btn.classList.remove('active');
-        
-        	// 3. Iluminamos únicamente el que se llama "Todos"
-        	if (btn.textContent.trim().toLowerCase() === 'todos') {
-           	btn.classList.add('active');
-        	}
-    		});
+        function restablecerCategoriaTodos() {
+            const botones = document.querySelectorAll('.cat-btn');
+            botones.forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.textContent.trim().toLowerCase() === 'todos') {
+                    btn.classList.add('active');
+                }
+            });
+            cargarProductos("Todos");
+        }
 
-    		// 4. Cargamos los productos correspondientes
-    		cargarProductos("Todos");
-		}
+function renderizarControlesPaginacion(totalPaginas) {
+            let contenedorPaginacion = document.getElementById('pagination-container');
+            
+            // Si el contenedor no existe, lo creamos dinámicamente debajo de la sección de productos
+            if (!contenedorPaginacion) {
+                contenedorPaginacion = document.createElement('div');
+                contenedorPaginacion.id = 'pagination-container';
+                contenedorPaginacion.style.cssText = "display: flex; justify-content: center; align-items: center; gap: 1rem; margin-top: 2rem; grid-column: 1/-1;";
+                document.getElementById('products-grid-container').after(contenedorPaginacion);
+            }
 
+            contenedorPaginacion.innerHTML = "";
 
-     // Evento que inicia la carga de manera estructurada una vez listo el DOM
+            if (totalPaginas <= 1) return; // Si solo hay una página, no mostramos botones
+
+            // Botón Anterior
+            contenedorPaginacion.innerHTML += `
+                <button onclick="cambiarPagina(${paginaActual - 1})" ${paginaActual === 1 ? 'disabled style="opacity: 0.5; cursor: not-allowed;"' : ''} class="cat-btn">⬅️ Anterior</button>
+                <span style="font-weight: bold; color: var(--dark);">Página ${paginaActual} de ${totalPaginas}</span>
+                <button onclick="cambiarPagina(${paginaActual + 1})" ${paginaActual === totalPaginas ? 'disabled style="opacity: 0.5; cursor: not-allowed;"' : ''} class="cat-btn">Siguiente ➡️</button>
+            `;
+        }
+
+        function removerControlesPaginacion() {
+            const contenedorPaginacion = document.getElementById('pagination-container');
+            if (contenedorPaginacion) contenedorPaginacion.innerHTML = "";
+        }
+
+        function cambiarPagina(nuevaPagina) {
+            paginaActual = nuevaPagina;
+            cargarProductos(categoriaActual, false); // false para que no reinicie a la página 1
+            window.scrollTo({ top: 300, behavior: 'smooth' }); // Sube suavemente la vista al cambiar de página
+        }
+
         document.addEventListener("DOMContentLoaded", () => {
             inicializarCatalogo();
-        });        
+        });
     </script>
 </body>
-	
 </html>
