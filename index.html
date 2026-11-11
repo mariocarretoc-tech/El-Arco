@@ -75,8 +75,9 @@
 	
         let categoriaActual = "Todos";
         let textoBusqueda = "";
-		let productosInventario = [];
-        let carrito = [];
+        let productosInventario = [];
+
+        let carrito = JSON.parse(localStorage.getItem('carrito_abarrotes')) || [];
 
 	let paginaActual = 1;
 	let productosPorPagina = 12; // Cambia este número según cuántos quieras mostrar por vista
@@ -112,6 +113,7 @@
                 
                 generarCategoriasDinamicas();
                 cargarProductos("Todos");
+                actualizarInterfaz();
             } catch (error) {
                 console.error("Error al cargar el catálogo o existencias:", error);
                 document.getElementById('products-grid-container').innerHTML = `
@@ -229,6 +231,8 @@ function cargarProductos(categoriaSeleccionada = "Todos", reiniciarPagina = true
             const productoExistente = carrito.find(item => item.nombre === nombre);
             if (productoExistente) { productoExistente.cantidad++; } 
             else { carrito.push({ nombre: nombre, precio: precio, cantidad: 1 }); }
+
+            guardarCarritoEnStorage();
             actualizarInterfaz();
         }
 
@@ -240,6 +244,7 @@ function cargarProductos(categoriaSeleccionada = "Todos", reiniciarPagina = true
                     carrito = carrito.filter(item => item.nombre !== nombre);
                 }
             }
+            guardarCarritoEnStorage();
             actualizarInterfaz();
         }
 
@@ -291,7 +296,8 @@ function cargarProductos(categoriaSeleccionada = "Todos", reiniciarPagina = true
 
             window.open(`https://wa.me/${numeroTelefono}?text=${encodeURIComponent(mensaje)}`, '_blank');
 
-            carrito = [];            
+            carrito = [];      
+            guardarCarritoEnStorage();      
             actualizarInterfaz();        
             cerrarCarrito();            
             alert("¡Pedido enviado! Hemos transferido tu carrito a WhatsApp para finalizar tu compra.");
@@ -300,7 +306,8 @@ function cargarProductos(categoriaSeleccionada = "Todos", reiniciarPagina = true
         function botonVaciarCarrito() {
             if (carrito.length === 0) return;
             if (confirm("¿Estás seguro de que deseas eliminar todos los productos de tu carrito?")) {
-                carrito = [];          
+                carrito = [];     
+                guardarCarritoEnStorage();     
                 actualizarInterfaz();  
                 cerrarCarrito();       
                 restablecerCategoriaTodos();
@@ -318,6 +325,10 @@ function cargarProductos(categoriaSeleccionada = "Todos", reiniciarPagina = true
             });
             cargarProductos("Todos");
         }
+
+function guardarCarritoEnStorage() {
+    localStorage.setItem('carrito_abarrotes', JSON.stringify(carrito));
+}
 
 function renderizarControlesPaginacion(totalPaginas) {
             let contenedorPaginacion = document.getElementById('pagination-container');
@@ -355,6 +366,17 @@ function renderizarControlesPaginacion(totalPaginas) {
 
         document.addEventListener("DOMContentLoaded", () => {
             inicializarCatalogo();
+
+// Detectar intentos de recargar o cerrar la página cuando el carrito no esté vacío
+window.addEventListener('beforeunload', (evento) => {
+    if (carrito.length > 0) {
+        // Cancela el evento para activar el popup nativo de confirmación del navegador
+        evento.preventDefault();
+        // Incluir returnValue es necesario para compatibilidad en navegadores antiguos/específicos
+        evento.returnValue = '';
+    }
+});
+
         });
     </script>
 </body>
