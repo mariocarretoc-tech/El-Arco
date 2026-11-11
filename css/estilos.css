@@ -1,10 +1,9 @@
-        :root {
+:root {
             --primary: #1976d2; /* Azul Medio */
             --primary-hover: #115293; 
             --secondary: #f57c00; /* Naranja */
             --dark: #333;
             --light: #f9f9f9;
-            --admin-color: #d32f2f; /* Rojo para modo admin */
         }
 
         * {
@@ -56,29 +55,27 @@
             font-weight: bold;
             transition: background 0.2s;
         }
-        
+
         .cart-btn:hover {
             background-color: #e65100;
         }
 
-        .admin-btn {
-            background-color: transparent;
+	.clear-cart-btn {
+            background-color: #dc3545; /* Rojo de advertencia */
             color: white;
-            border: 1px solid white;
-            padding: 0.5rem 1rem;
+            border: none;
+            width: 100%;
+            padding: 0.6rem;
+            margin-top: 0.5rem;
             border-radius: 5px;
             cursor: pointer;
+            font-size: 0.9rem;
             font-weight: bold;
-            transition: 0.2s;
+            transition: background 0.2s;
         }
 
-        .admin-btn:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-        }
-
-        .admin-btn.active {
-            background-color: var(--admin-color);
-            border-color: var(--admin-color);
+        .clear-cart-btn:hover {
+            background-color: #bd2130;
         }
 
         /* Banner Principal */
@@ -94,54 +91,11 @@
             padding: 0 1rem;
         }
 
-        /* Categorías */
-        .categories {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            padding: 2rem 1rem;
-            flex-wrap: wrap;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .cat-btn {
-            background: white;
-            border: 2px solid var(--primary);
-            color: var(--primary);
-            padding: 0.5rem 1.5rem;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: 0.3s;
-        }
-
-        .cat-btn:hover, .cat-btn.active {
-            background-color: var(--primary);
-            color: white;
-        }
-
         .hero h2 {
             font-size: 2.3rem;
             margin-bottom: 0.5rem;
         }
 
-
-        .admin-panel h3 {
-            color: var(--admin-color);
-            margin-bottom: 0.5rem;
-        }
-
-        .admin-panel p {
-            font-size: 0.9rem;
-            color: #555;
-            margin-bottom: 1.2rem;
-        }
-
-        .excel-input-wrapper {
-            display: inline-block;
-            position: relative;
-        }
         /* Barra de búsqueda */
         .search-container {
             max-width: 1200px;
@@ -170,6 +124,33 @@
             box-shadow: 0 3px 8px rgba(25, 118, 210, 0.2);
         }
 
+        /* Categorías */
+        .categories {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            padding: 1.5rem 1rem 2rem 1rem;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .cat-btn {
+            background: white;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+            text-transform: capitalize;
+        }
+
+        .cat-btn:hover, .cat-btn.active {
+            background-color: var(--primary);
+            color: white;
+        }
 
         /* Contenedor de Productos */
         .products-section {
@@ -208,10 +189,7 @@
             background-color: #fff;
             padding: 1rem;
             border-bottom: 1px solid #f0f0f0;
-        }
-
-        .admin-upload-zone input[type="file"] {
-            display: none;
+            cursor: zoom-in; /* Indica visualmente que se puede ampliar */
         }
 
         .product-info {
@@ -222,44 +200,6 @@
             flex-grow: 1;
             justify-content: space-between;
             gap: 0.5rem;
-        }
-
-        /* Inputs editables individuales */
-        .edit-title-input {
-            width: 100%;
-            padding: 0.3rem;
-            border: 1px solid var(--admin-color);
-            border-radius: 4px;
-            text-align: center;
-            font-size: 0.95rem;
-            font-weight: 600;
-        }
-
-        .edit-price-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.2rem;
-            color: var(--admin-color);
-        }
-
-        .edit-price-input {
-            width: 80px;
-            padding: 0.3rem;
-            border: 1px solid var(--admin-color);
-            border-radius: 4px;
-            text-align: center;
-            font-weight: bold;
-            font-size: 1.1rem;
-        }
-
-        .edit-dept-select {
-            width: 100%;
-            padding: 0.3rem;
-            border: 1px solid var(--admin-color);
-            border-radius: 4px;
-            font-size: 0.85rem;
-            background: white;
         }
 
         .product-title {
@@ -397,6 +337,47 @@
             text-align: center;
             color: #888;
             margin: 2rem 0;
+        }
+
+        /* MODAL DE VISTA AMPLIADA DE IMAGEN */
+        .image-lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            z-index: 3000; /* Por encima de todo */
+            justify-content: center;
+            align-items: center;
+            cursor: zoom-out;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: 4px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.5);
+            background: white;
+            padding: 0.5rem;
+            animation: zoomInEffect 0.25s ease-out;
+        }
+
+        .close-lightbox {
+            position: absolute;
+            top: 1.5rem;
+            right: 2rem;
+            color: white;
+            font-size: 2.5rem;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        @keyframes zoomInEffect {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
         }
 
         footer {
